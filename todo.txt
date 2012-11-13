@@ -2,14 +2,18 @@
 	- Create a JSON file with a dictionary of company listings
 	[{"topic":topic, "url":url, "companyName":companyName, "jobDescription":description}]
 
-2. Create stats for the initial job descriptions
-	- tfidf?
+2. Create tf for each document.
+
+3. Create PDF to turn in.
+
+4. Create stats for the initial job descriptions
+	- tf?
 	- languages?
 	- length of job description?
 	- number of languages?
 
-3. Display stats for checkpoint1
+5. Display stats for checkpoint1
 
-4. Recommender algorithm
+6. Recommender algorithm
 
  
