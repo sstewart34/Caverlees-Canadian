@@ -1,0 +1,40 @@
+animation
+computer graphics
+medical imaging
+infrastructure
+cloud computing
+big data
+database
+microcomputer systems
+computer architecture
+business intelligence
+business strategy
+game development
+software engineering
+artificial intelligence
+distributed object programming
+robotics
+network security
+operating systems
+compiler design
+machine learning
+algorithm analysis
+geometric modeling
+image synthesis
+information retrieval
+generic programming
+quantum algorithms
+wireless systems
+computer-human interaction
+parallel computing
+computational biology
+computational geometry
+web development
+pattern analysis
+digital imaging
+embedded systems
+physics based modeling
+map-reducing
+high-performance computing
+sketch recognition
+
