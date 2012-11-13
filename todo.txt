@@ -1,0 +1,15 @@
+1. Parse
+	- Create a JSON file with a dictionary of company listings
+	[{"topic":topic, "url":url, "companyName":companyName, "jobDescription":description}]
+
+2. Create stats for the initial job descriptions
+	- tfidf?
+	- languages?
+	- length of job description?
+	- number of languages?
+
+3. Display stats for checkpoint1
+
+4. Recommender algorithm
+
+ 
