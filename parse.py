@@ -17,20 +17,25 @@ def main():
 		for entry in os.listdir('./DATA/' + topic):
 			path = './DATA/' + topic + '/' + entry
 			print path
-       			json = {'topic':"", 'jobDescription':""}
+       			dictionary = {'topic':"", 'jobDescription':""}
 			file = open(path)
 			page = BeautifulSoup(file)
 
 			jobDescription = page.findAll(id="jobBodyContent")
 			for descrip in jobDescription:
-      				description = stem(str(descrip.get_text().rstrip()))
+      				#print descrip.get_text()
+				description = stem(str(descrip.get_text().strip().encode('utf8')))
 			        #print descrip.get_text()
-				json['jobDescription'] = description
-				json['topic'] = topic.replace('+',' ')
-		       	allPosts.append(json)
+				dictionary['jobDescription'] = description[0]
+				dictionary['topic'] = topic.replace('+',' ')
+		       	allPosts.append(dictionary)
 			file.close()	
-	print allPosts
-
+	#print allPosts
+	f = open('jobs.json','w')
+	for item in allPosts:
+		f.write(json.dumps(item))
+		f.write('\n')
+	f.close()
 
 if __name__ == "__main__":
 	main()
