@@ -27,21 +27,21 @@ class RecommenderAlgorithm(object):
 		for word in tokenize(text.encode('utf8')):
 			if word in self.index:
 				if topic not in self.index[word]['topics']:
-					self.index[word]['topics'].append(topic)
+					self.index[word]['topics'][topic] = 0
+
+				self.index[word]['topics'][topic] += 1
 				self.index[word]['count'] += 1
 			else:
 				if word in self.languages:
-					self.index[word] = {'count':1, 'topics':[topic]}
-					self.index[word]['count'] = 1
+					self.index[word] = {'count':1, 'topics':{}}
+					self.index[word]['topics'][topic] = 1
 		count += 1
 	print count
         sorted_list = [x for x in self.index.iteritems()]
 	sorted_list.sort(key=lambda x: x[1]['count']) # sort by count
 	sorted_list.reverse()
 	for item in sorted_list:
-		print item[0]
-	for item in sorted_list:
-		print item[1]['count']
+		print item[0], item[1]['count'], item[1]['topics']
 	print len(sorted_list)
  
 def main():   
