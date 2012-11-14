@@ -19,13 +19,14 @@ for topic in topics:
 url = "http://m.monster.com/JobSearch?searchType=1&addToRecentSearch=True&jobtitle=&keywords="
 
 for topic in topics:
-    the_page = requests.get(url + topic).text
+	for page in ["1","2","3"]:
+		the_page = requests.get(url + topic + "&page="+page).text
     
-    soup = BeautifulSoup(the_page)
-    spans = soup.find_all(id='LabelJobTitle')
-    for span in spans:
-        sub_directory = unicodedata.normalize('NFKD', span.parent.get("href")).encode('ascii','ignore') #changes unicode to str
-        urls[topic].append('http://m.monster.com' + sub_directory)
+		soup = BeautifulSoup(the_page)
+		spans = soup.find_all(id='LabelJobTitle')
+		for span in spans:
+			sub_directory = unicodedata.normalize('NFKD', span.parent.get("href")).encode('ascii','ignore') #changes unicode to str
+			urls[topic].append('http://m.monster.com' + sub_directory)
 
 if not os.path.exists('DATA'):
     os.makedirs('DATA')

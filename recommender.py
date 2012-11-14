@@ -41,7 +41,9 @@ class RecommenderAlgorithm(object):
 	sorted_list.sort(key=lambda x: x[1]['count']) # sort by count
 	sorted_list.reverse()
 	for item in sorted_list:
-		print item[0], item[1]['count'], item[1]['topics']
+		print item[0]
+	for item in sorted_list:
+		print  item[1]['count']#, item[1]['topics']
 	print len(sorted_list)
  
 def main():   

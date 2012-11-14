@@ -17,7 +17,7 @@
         
       <meta name = "DCSext.k" content= "JobView" />
       <meta name = "DCS.dcsuri" content= "/getjob.aspx" />
-      <meta name = "DCS.seojobview" content= "/Superstar-IOS-Engineer-IOS-Iphone-Product-Web-Social-Job-West-Hollywood-CA-US-115528500" />
+      <meta name = "DCS.seojobview" content= "/RF-Engineer-CDMA-LTE-EVDO-Design-Optimization-Wireless-Job-Tampa-FL-US-115365850" />
 
         
     </head>
@@ -37,7 +37,7 @@ Menu</a>
     <div id="arrow"></div>
     <div><a data-role="button" data-iconpos="right" data-icon="search-job" href="/" title="Search for Jobs" data-ajax="">Search for Jobs</a></div>
     <div><a data-role="button" data-iconpos="right" data-icon="saved-job" href="/SavedJobs" title="Saved Jobs" data-ajax="false">Saved Jobs</a></div>
-    <div><a data-role="button" data-iconpos="right" data-icon="signin" href="http://login.monster.com/mobilelogin.aspx?r=http%3a%2f%2fm.monster.com%2fSuperstar-IOS-Engineer-IOS-Iphone-Product-Web-Social-Job-West-Hollywood-CA-115528500&ch=MONS" title="Sign In" data-ajax="">Sign In</a></div>
+    <div><a data-role="button" data-iconpos="right" data-icon="signin" href="http://login.monster.com/mobilelogin.aspx?r=http%3a%2f%2fm.monster.com%2fRF-Engineer-CDMA-LTE-EVDO-Design-Optimization-Wireless-Job-Tampa-FL-115365850&ch=MONS" title="Sign In" data-ajax="">Sign In</a></div>
 
 
 </div>
@@ -345,7 +345,7 @@ Menu</a>
             emailvalue = decodeURIComponent(cvalue[0]);
         }     
         var referralCookie = $.cookie("mobjobsreferralURL");
-        var postData ={jobId : "115528500", email:emailvalue, pagerefer:referralCookie};
+        var postData ={jobId : "115365850", email:emailvalue, pagerefer:referralCookie};
         var request = $.ajax({
         url:url,
         data: postData,
@@ -378,210 +378,220 @@ Menu</a>
     </script>
 
 <script type="text/javascript" language="javascript"><!--
-var jobPopup115528500;
+var jobPopup115365850;
 var MONS_LOG_VARS = { //LoggingVars
-JobID : 115528500, 
+JobID : 115365850, 
 ApplyType : 1, 
 PopUpMessage: 'Your pop-up blocking software is preventing proper operation of jobsearch site', 
 EE: 'EAAQrXuZmYIUF5avSTEZs5tdZQ--', 
 ApplyOnlineUrl: '', 
-TrackingCompany: 'CyberCoders', 
-TrackingLogo: '', 
-JobWinPopup : jobPopup115528500, 
-LogUrl :'http://m.monster.com/log.ashx?PositionAdID=115528500&folderid=125873819&logtype='
+TrackingCompany: 'Randstad Engineering', 
+TrackingLogo: 'http://company.monster.com/thinkr', 
+JobWinPopup : jobPopup115365850, 
+LogUrl :'http://m.monster.com/log.ashx?PositionAdID=115365850&folderid=125502680&logtype='
 }
 //--></script>
 
 
 <div id="jobViewBody">
-    <html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><title>
-    Superstar IOS Engineer - IOS, Iphone, Product, Web, Social Job in West Hollywood 90038, California US
-  </title><i_jt_headsection></i_jt_headsection></head><body><i_jt_header></i_jt_header><div><div align="right" style="font-size:12px;"><a href="http://jobsearch.monster.com/Search.aspx?co=xcyberc3x&amp;re=3101" mns_rt="Jobs"><b>All CyberCoders jobs</b></a>  
-					<a href="http://jobsearch.monster.com/emailfriend.aspx?JobID=115528500&amp;JobLocation=West+Hollywood%2c+CA+90038&amp;JobTitle=Superstar+IOS+Engineer+-+IOS%2c+Iphone%2c+Product%2c+Web%2c+Social&amp;CompanyName=CyberCoders&amp;redirect=http%3a%2f%2fjobsearch.monster.com%2fPowerSearch.aspx%3f" mns_rt="EmailFriend"><b>Send this job to a friend</b></a><br></div><br><span ID="TrackingJobBody" NAME="TrackingJobBody">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<title>Superstar IOS Engineer - IOS, Iphone, Product, Web, Social Job in West Hollywood 90038, California US</title>
-		<link rel="shortcuticon" href="http://www.cybercoders.com/cc.ico" />
-		<link type="text/css" href="http://www.cybercoders.com/App_Themes/Web30/master.css" rel="Stylesheet" />
-		<link type="text/css" href="http://www.cybercoders.com/App_Themes/Web30SmallCentered/Frames/Purple/frame.css" rel="Stylesheet" />
-		<link type="text/css" href="http://www.cybercoders.com/App_Themes/Web30SmallCentered/Frames/White/frame.css" rel="Stylesheet" />
+    
+        <script language="Javascript" type="text/javascript">
+function wrap(EL, chars)
+{
+	var IE6 = (navigator.userAgent.indexOf("MSIE 6")>0)?true:false;
+	var microspace = String.fromCharCode('8203');
+	if (IE6) microspace = "<img src='http://media.monster.com/jobview_standard/images/pixel.gif' height=1 width=1>";
+	
+	skipcode = /(<!-{2}\s(?:\n|.)*?\s-{2}>|<(?:\n|[^'">]|'(?:\n|[^'])*?'|"(?:\n|[^"])*?")*?>|&\S+?;|\bhttp:\/\/|\s+)/i; // "
+	
+	wrapchars = /([\/\?\.\+%@\=])/;
+	
+	outstr = '';
+	
+	instr = EL.innerHTML;
+	
+	inpos = 0;
+	
+	while (inpos < instr.length) {
+		parseto = instr.substr(inpos).search(skipcode);
 		
+		if (parseto == 0) {
+		    matched = instr.substr(inpos).match(skipcode);
+		    outstr += matched[0];
+		    inpos += matched[0].length;
+		} else {
+			if (parseto < 0) {
+				parseto = instr.substr(inpos).length;
+			}  
+
+			wrapat = instr.substr(inpos,parseto).search(wrapchars);
+			
+			if ((chars > 0) && ((wrapat > chars) ||
+				((wrapat < 0) && (parseto > chars)))) {
+				
+				wrapat = chars-1;
+			}
+			
+			if (wrapat >= 0) {
+				outstr += instr.substr(inpos, wrapat+1) + microspace;
+				inpos += wrapat+1;
+			} else {
+				outstr += instr.substr(inpos,parseto);
+				inpos += parseto;
+			}
+		}
+	}
+	
+	EL.innerHTML = outstr;
+}
+
+function spanwrap()
+{
+	spans = document.getElementsByTagName("span");
+	var brwsr = ((/Firefox[\/\s](\d+\.\d+)/.test(navigator.userAgent)) || (/Opera[\/\s](\d+\.\d+)/.test(navigator.userAgent)))?true:false;
+	if (brwsr) {
+		wrap(document.getElementById("jobBodyContent"), 75);
+	}
+	
+	for (var i = 0; i < spans.length; i++) {
+		//only insert wrap characters in jobbody for firefox & opera
+		if (spans[i].className.toLowerCase() == 'wrappable') {
+			wrap(spans[i], 15);
+		}
 		
-		<style type="text/css">
-			body { color: #573a69; background: url(http://www.cybercoders.com/images/bkgd2.png); }
-			/* fix for monster's problem */
-			form#forApply { height: auto;  }
-			div.description h4 { background-image: url(http://www.cybercoders.com/images/grnBar.png); background-repeat: no-repeat; margin: 0; padding: 8px 0 0 60px; display: block; width: 690px; height: 29px; color: White; font-size: 14pt; text-align: left; }
-			div.description div.text { margin: 0 10px 0 10px; }
-			div.description div.text td.center { padding: 20px 35px 20px 35px; }
-			div.pageHeader, div.page { width: 750px; padding: 0; }
-			table.purple td.center label { font-weight: bold; color: White; }
-			table.purple td.center { padding-bottom: 20px; }
-			a.applyButton { display: block; width: 185px; height: 49px; background-repeat: no-repeat; background-image: url(http://www.cybercoders.com/images/btnApplyNow.png); margin: -25px auto 0 auto; }
-			a.applyButton span, a.sendToFriend span, a.searchMoreJobs span { display: none; }
-			h3 { font-size: 13pt; text-transform: uppercase; margin: 0; padding: 0; }
-			div.pageHeader div.center { text-align: right; }
-			a.sendToFriend, a.searchMoreJobs { width: 125px; height: 49px; display: block; background-repeat: no-repeat; float: right; }
-			a.sendToFriend { background-image: url(http://www.cybercoders.com/images/btnSendFriend.png); }
-			a.searchMoreJobs { background-image: url(http://www.cybercoders.com/images/btnSearchJobs.png); }
-			div.pageHeader div.column { margin-top: 0; }
-			div.page { margin-top: 65px; }
-			div.menu { padding: 0; margin: 20px 10px 0 120px; float: left; font-weight: bold; text-align: center; height: auto; min-height: 120px; width: 250px; }
-			table.white { float: none; font-size: 12px; }
-			table.purple-section { font-size: 12px; }
-			div.notice { width: 325px; overflow: hidden; }
-			div.description { width: 750px; margin: 0 auto 0 auto; }
-			div.header { overflow: auto; width: 100% }
-			div.page div.header div.logo { background-image: url(http://www.cybercoders.com/Handlers/Logo.ashx); }
-			div.page div.menu { background-image: none; }
-			div.hidden { display: none; }
-			div.nonFooter { text-align: center; position: static; }
-			h4 { width: 750px; height: 37px; }
-		</style>
-		<!--[if lt IE 7]>
-			<style type="text/css">
-				@import url(http://www.cybercoders.com/Resources/Styles/Web30_master_ie6.css);
-				@import url(http://www.cybercoders.com/Resources/Styles/Web30SmallCentered_Frames_Purple_ie6.css);
-				@import url(http://www.cybercoders.com/Resources/Styles/Web30SmallCentered_Frames_White_ie6.css);
-			</style>
-			<style type="text/css">				
-				div.description h4 { background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.cybercoders.com/images/grnBar.png", sizingMethod="crop"); }
-				a.applyButton { position: relative; background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.cybercoders.com/images/btnApplyNow.png", sizingMethod="crop"); cursor: pointer; }
-				a.sendToFriend { background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.cybercoders.com/images/btnSendFriend.png", sizingMethod="crop"); cursor: pointer; }
-				a.searchMoreJobs { background-image: none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="http://www.cybercoders.com/images/btnSearchJobs.png", sizingMethod="crop"); cursor: pointer; }
-			</style>
-		<![endif]-->
-	</head>
-	<span id='TrackingJobBody' name='TrackingJobBody'><body>
-		<div class="nonFooter">
-			<div class="page">					
-				<div class="header">
-					<div class="logo">
-						<a href="http://www.CyberCoders.com/?ad=MSChuckShirley&utm_source=monster&utm_medium=jobdetails&utm_content=logo&utm_campaign=MSChuckShirley">
-							<span>CyberCoders - Be Selective</span>
-						</a>
-					</div>					
-					<div class="notice">
-						<table cellpadding="0" cellspacing="0" border="0" class="purple">
-							<tr>
-								<td class="top-left"></td>
-								<td class="top"></td>
-								<td class="top-right"></td>
-							</tr>
-							<tr>
-								<td class="left"></td>
-								<td class="center">
-									<table width="100%" class="purple-section">
-										<tr>
-											<td style="width: 40%" align="right"><label>Location</label></td>
-											<td style="width: 10px"></td>
-											<td>West Hollywood, CA;<br />West Los Angeles, CA</td>
-										</tr>
-										<tr>
-											<td align="right"><label>Salary</label></td>
-											<td></td>
-											<td>$80,000 - $120,000</td>
-										</tr>
-										<tr>
-											<td align="right"><label>Education</label></td>
-											<td></td>
-											<td>Bachelor of Science</td>
-										</tr>
-										<tr>
-											<td align="right"><label>Category</label></td>
-											<td></td>
-											<td>Information Technology</td>
-										</tr>
-										<tr>
-											<td align="right"><label>Experience Required</label></td>
-											<td></td>
-											<td>At least 2 Years</td>
-										</tr>
-										<tr>
-											<td valign="top" align="right"><label>Short Description</label></td>
-											<td></td>
-											<td>West Hollywood Based Mobile Co. Seeks IOS Superstar!  IOS, Iphone, Mobie, Ecommerce</td>
-										</tr>
-										<tr>
-											<td align="right" valign="top"><label>Required Skills</label></td>
-											<td></td>
-											<td>mobile, ios, iphone, ecommerce, android, agile, scrum</td>
-										</tr>
-										<tr>
-											<td align="right"><label>Recruiter</label></td>
-											<td></td>
-											<td>Chuck Shirley</td>
-										</tr>
-										<tr>
-											<td align="right"><label>Date Updated</label></td>
-											<td></td>
-											<td>11/12/2012</td>
-										</tr>
-									</table>									
-								</td>
-								<td class="right"></td>
-							</tr>
-							<tr>
-								<td class="bottom-left"></td>
-								<td class="bottom"></td>
-								<td class="bottom-right"></td>
-							</tr>
-						</table>
-						<a href="http://www.CyberCoders.com/JobBoardApply.aspx?ad=MSChuckShirley&JobID=NNG-iosproductwholly&menu=0&utm_source=monster&utm_medium=jobdetails&utm_content=Apply+Now&utm_campaign=MSChuckShirley" title="Apply Now!" class="applyButton"><span>Apply Now!</span></a>						
-					</div>
-				    <div class="menu">
-					    <p>West Hollywood Based Mobile Co. Seeks IOS Superstar!  IOS, Iphone, Mobie, Ecommerce</p>
-					    <p>This position is open as of 11/12/2012.</p>
-					    <p>
-						    Are you a fit?<br />
-						    <a href="http://www.CyberCoders.com/JobBoardApply.aspx?ad=MSChuckShirley&JobID=NNG-iosproductwholly&menu=0&utm_source=monster&utm_medium=jobdetails&utm_content=Click+here+to+apply+now!&utm_campaign=MSChuckShirley">Click here to apply now!</a>
-					    </p>
-				    </div>
-				</div>				
-			</div>
-			<div class="description">
-				<h4><span>Superstar IOS Engineer</span></h4>
-				<div class="text">
-					<table cellpadding="0" cellspacing="0" border="0" class="white">
-						<tr>
-							<td class="left"></td>
-							<td class="center">
-								<h3>Skills Required:</h3>
-								<p>mobile, ios, iphone, ecommerce, android, agile, scrum</p>
-								<h3>Job Description:</h3>
-								<p>Are you a Superstar IOS Engineer with a Product Sensibility?  If so, read on....<br><br>We are a startup with big company backing and are focused in the ecommerce meets mobile space!  If you want to be on the ground floor of a startup but crave the stability (financial and benefits) of a large company, this is the opportunity for you!  <br><br>What's in it for you?<br><br>- Work for a startup with big company backing (do stuff that is meaningful and have a real impact but don't need to worry about stability)<br>- Competitive Base Salary<br>- Full Benefits (Medical, Dental, Vision, 401K)<br>- Equity<br>- Avoid the Commute to Santa Monica<br><br>What you will be doing:<br><br>- Create and oversee entire product roadmap plan and execution with timely delivery of scoped features<br>- Work hand-in-hand with designers, other startup entrepreneurs and executive teams to develop product strategy and drive technical brainstorming, analyses and solutions for complex ecosystem and execution challenges.<br>- Create innovative go-to market strategies across multiple mobile business models, including revenue generation through subscriptions, transactions, and affiliate marketing (advertising, referral, etc.)<br>- Support the launch of the product, including app store submission and management<br>- Evaluate new technologies for integration into mobile products, including GPS/LBS, browser enhancements including HTML5/CSS, gyroscope/accelerometers, 3rd party APIs, voice, and site tracking/metrics technologies/companies, PAN networks, hardware sensors and other innovations in Computer Vision, etc.<br>- Lend expertise to support wireless carrier and OEM relationships, as it pertains to the product domain<br>- Oversee technical due diligence of proposed partner technologies across Android, Apple iOS, mobile browsing (HTML5) ad-serving, messaging, emerging platforms including Amazon Fire, etc. and scalable development platforms, as needed<br><br>What you need:<br><br>- IOS Experience<br>- Passionate about Internet and mobile application technologies and the evolving world of wireless<br>- Holistic understanding of the mobile user experience, (e.g. pricing, technology, user behavior) and variances within numerous international markets, handsets and operating systems.<br>- Ability to explain the complexities, opportunities and limitation of mobile devices and technologies to non-technical team members<br>- Enjoys individual accountability as well as teamwork toward common goals<br>- B.S. Computer Science or related engineering field<br><br>So if you are a Superstar IOS Engineer with a Product Sensibility, apply today!<br /><br />Must be authorized to work in the United States on a full-time basis for any employer.</p>
-								<div class='adFooter'>
-									<strong>Want to interview today? <a href="http://www.CyberCoders.com/JobBoardApply.aspx?ad=MSChuckShirley&JobID=NNG-iosproductwholly&menu=0&utm_source=monster&utm_medium=jobdetails&utm_content=2-minute+Online+Interview&utm_campaign=MSChuckShirley">Click Here to Do a Quick 2-Minute Online Interview!</a></strong>
-									<p align='center'><strong>Are you a fit for this position?</strong></p>
-									<p align='center'>
-										<strong><a style='font-size:11pt' href='http://www.CyberCoders.com/JobBoardApply.aspx?jump=1&menu=0&ad=MSChuckShirley&JobID=NNG-iosproductwholly&utm_source=monster&utm_medium=jobdetails&utm_content=Please+Click+Here+to+Apply!&utm_campaign=MSChuckShirley'>Please Click Here to Apply!</a></strong><br />
-										<span style="font-size:7pt">(your information will be kept strictly confidential!)</span>
-										<br/><br/>													
-									</p>
-									<p>Looking forward to receiving your resume through our website and going over the position with you. Clicking apply is the best way to apply, but you may also:</p>
-									<p>Email your resume in Word to:</p>
-									<p><a href="mailto:Chuck.Shirley@CyberCoders.com?subject=CC MonsterAp: NNG-iosproductwholly : Superstar IOS Engineer - IOS, Iphone, Product, Web, Social" style="color:Blue;">Chuck.Shirley@CyberCoders.com</a><br />
-									**Please do NOT change the email subject line in any way. You must keep the JobID: CC MonsterAp : NNG-iosproductwholly -- in the email subject line for your application to be considered.***
-									</p>
-									<p>Chuck Shirley - Executive Recruiter - CyberCoders</p>
-                                    <p>CyberCoders, Inc is proud to be an Equal Opportunity Employer.  Applicants are considered for all positions without regard to race, color, religion, sex, national origin, age, disability, sexual orientation, ancestry, marital or veteran status.</p>
-							</td>
-							<td class="right"></td>
-						</tr>
-						<tr>
-							<td class="bottom-left"></td>
-							<td class="bottom"></td>
-							<td class="bottom-right"></td>
-						</tr>
-					</table>
-					
-					<a href="http://www.CyberCoders.com/JobBoardApply.aspx?ad=MSChuckShirley&JobID=NNG-iosproductwholly&menu=0&utm_source=monster&utm_medium=jobdetails&utm_content=Apply+Now!+Bottom&utm_campaign=MSChuckShirley" title="Apply Now!" class="applyButton"><span>Apply Now!</span></a>						
-				</div>
-			</div>
-		</div>
-		<!-- NNG-iosproductwholly100 -->
-	</span></body>
-</html></span></div><i_jt_footer></i_jt_footer></body></html>
+	}
+}
+
+function on_load() {
+	spanwrap();
+	var tables = document.getElementsByTagName("table");
+	for (x in tables) {
+		if (tables[x].offsetWidth > 500) tables[x].style.width = "500px";
+	}
+}
+
+function removeLogo() {
+	replaceImg = "http://media.monster.com/jobview_standard/images/pixel.gif";
+	document.getElementById("companyLogo").src = replaceImg;
+	document.getElementById("companyNameHeader").style.display = "block";
+}
+
+function newWin(videourl)
+{
+	msgWindow=window.open(videourl,"JobVideo","width=640, height=480,resizable=yes, status=no, titlebar=no, toolbar=no, location=no, scrollbars=no, menubar=no");
+}
+</script>
+
+<style type="text/css" media="screen, handheld" xmlns:ms="urn:schemas-microsoft-com:xslt" xmlns:akamai="http://www.akamai.com/xslt/1.0">
+        
+        div#monsterAppliesHeaderHolder, div#monsterAppliesFooterHolder, div.AppliesFooterHolder  { display: none; }
+
+        /* CSS Document */
+        html {overflow-x: hidden;overflow-y: auto;} 
+        em {font-style:italic;}
+
+        /*body style*/
+        body{ font-size: 14px; font-family: Helvetica,Arial,sans-serif; margin: 0; padding: 0; background: #C8C8C8; overflow: visible !important; }
+
+        /*wrapper for jobview*/
+        #bodycol { float: none !important; margin-bottom: 0; margin: 10px 10px; background: #ffffff; border: 1px solid #A4A4A4; border-radius: 8px; }
+        #jobwrapper { margin: 0; float: none!important; }
+
+        /*header*/
+        #jobheader { height: auto; background: #e1e8ee; border-top-left-radius: 8px; border-top-right-radius: 8px; }
+        #jobheader p { padding: 15px 10px; color: #97a6b2; font-size: 24px; float: none !important; margin: 0; height: auto; }
+        #jobheader a p#companyNameHeader {  text-decoration: none; cursor: pointer; }
+        #jobheader p#companyNameHeader { color: #97a6b2; font-size: 200%; float: left; }
+        #jobheader img { border: none; }
+        #jobheader img.logo { background: #fff; border: none;  margin: 10px 10px; float: left; max-width: 90%;  border-top-left-radius: 8px; border-top-right-radius: 8px; }
+        #jobheader #subicons { float: right; margin: 0 10px 0 0; }
+        #jobheader #subicons img { border: none; margin: 5px; }
+
+        /*contents*/
+        #jobcopy { margin: 10px; float: none !important; display: block; overflow: hidden !important; }
+        #jobcopy h1 { color: #728d2e; font-size: 20px; margin: 0 0 10px 0; font-weight: bold; }
+        #jobcopy h2 { color: #6d369a; font-weight: bold; font-size: 16px; border-bottom: 1px  #666; padding-bottom: 3px; }
+        #jobcopy p { color: #000; line-height: normal; font-size: 14px; margin: 0; min-height: 13px; _height: 13px; }
+        #jobcopy li { color: #000; line-height: 1.5em; font-size: 14px; margin-bottom: 5px; }
+        #jobcopy a { text-decoration: underline; color: #564060; }
+
+        /*job summary*/
+        #jobsummary { float: none !important; margin: 0; }
+        #jobsummary_content { padding: 5px 0; border-bottom: 1px dotted grey; margin-top: 1.5em;}
+        #jobsummary_content h2 { color: #6d369a; font-weight: bold; font-size: 16px; border-bottom: 1px  #666; padding-bottom: 3px; margin: 0; }
+        #jobsummary_content dl { color: #000; font-size: 14px; margin-top: 10px; }
+        #jobsummary_content dt { font-weight: bold; line-height: 1.25em; }
+        #jobsummary_content dd { font-weight:normal; margin: 0 0 10px 0; line-height: 1.25em; }
+        #jobsummary_content dd.multipleddlast { background: url(http://media.newjobs.com/jobview_standard/images/purple_bullet.gif) no-repeat top left; padding-left: 16px; margin-bottom: 10px; }
+        #jobsummary_content dd.multipledd { background: url(http://media.newjobs.com/jobview_standard/images/purple_bullet.gif) no-repeat top left; padding-left: 16px;  margin-bottom: 3px; }
+
+        /*about job content*/
+        #jobBodyContent { width: 100%; height: auto; }
+        #jobBodyContent h1{ font-size: 20px; line-height: 1.5em; }
+        #jobBodyContent h2 { font-size: 16px; }
+        #jobBodyContent h3 { font-size: 14px; }
+        #jobBodyContent h4 { font-size: 11px; }
+        #jobBodyContent h5 { font-size: 11px; }
+        #jobBodyContent h6 { font-size: 11px; }
+        #jobBodyContent p.MsoNormal { margin: 0; }
+        #jobBodyContent li.MsoNormal { margin: 0; }
+        #jobBodyContent ol { margin-bottom: 0; margin-top:1em; line-height: 13px;}
+        #jobBodyContent ul { margin-bottom: 0; margin-top:13px; line-height: 13px;}
+
+        /*incomplete*/
+        #incomplete {margin: 2px auto; padding:20px;}
+        #incompleteleft {float: left; width:30px; padding: 0 0 0 135px;}
+        #incompleteright {float: left; width:588px; padding: 0 3px 0 0; font-size:13px; line-height:normal;}
+        #monsterheader img { display:none; }
+        
+        /*job info (eg: location & industries)*/
+        .jobinfo{ line-height: 1.5em; }
+
+        span { line-height: 15px; }
+        
+        /*Contact info*/
+        .sidecolbox {border-top: 1px dotted grey; }
+        .sidecolbox ul li { background: url(http://media.newjobs.com/jobview_standard/images/gray_arrow_bullet.gif) no-repeat top left; padding: 3px 0 3px 34px; margin: 0 0 8px 0; }
+        .sidecolbox ul li a { text-decoration: underline; color: #564060; }
+        .sidecolbox h2 {color: #6D369A; font-weight: bold; font-size: 16px; padding-bottom: 3px;}
+        .sidecolbox p {  margin: 0px 12px 10px 12px; line-height: 1.25em; }
+        .sidecolbox strong { font-weight: bold; }
+        .sidecolbox h4 {  margin: 0px 12px; line-height: 1.25em; font-weight: bold; }
+		
+      </style>
+<div id="monsterheader" xmlns:ms="urn:schemas-microsoft-com:xslt" xmlns:akamai="http://www.akamai.com/xslt/1.0"><img src="http://media.newjobs.com/jobview_standard/images/monster.gif" alt="Monster" width="115" height="19"></div>
+<div id="outerwrapper" xmlns:ms="urn:schemas-microsoft-com:xslt" xmlns:akamai="http://www.akamai.com/xslt/1.0">
+  <div id="bodycol"><a name="bodycol"></a><div id="jobheader"><img border="0" src="http://media.monster.com/xthinkrx/joblogo.gif" alt="Randstad Engineering Company Logo" id="companyLogo" class="logo" onerror="removeLogo()"><p id="companyNameHeader" style="display:none">Randstad Engineering</p><div style="clear:both;height:1px">&#160;</div></div><div id="jobwrappertop2">&#160;</div><div id="jobwrapper">
+      <div id="jobcopy">
+        <h1>RF Engineer - CDMA, LTE, EVDO / Design and Optimization / Wireless</h1>
+        <div class="jobinfo">Tampa, FL 33609</div>
+        <div class="jobinfo">Telecommunications Services</div>
+        <div id="jobsummary_content">
+          <h2>Job Summary</h2>
+          <dl>
+            <dt>Company</dt>
+            <dd><a href="http://company.monster.com/thinkr" mns_rt="companyprofileclick" target="_blank" class="profilelink" title="Randstad Engineering"><span class="wrappable">Randstad Engineering</span></a></dd>
+            <dt>Job Type</dt>
+            <dd class="multipledd"><span class="wrappable">Full Time</span></dd><dd class="multipleddlast"><span class="wrappable"> Temporary/Contract/Project</span></dd>
+            <dt>Career Level</dt>
+            <dd><span class="wrappable">Experienced (Non-Manager)</span></dd>
+            <dt>Salary</dt>
+            <dd><span class="wrappable">$29.50 - $32.50  /hour</span></dd>
+            <dt>Job Reference Code</dt>
+            <dd><span class="wrappable">94012</span></dd>
+            <dt>Contact Information</dt>
+            <dd class="multipledd"><span class="wrappable">RandstadEngineering.com Job Number 94012
+				</span></dd><dd class="multipleddlast"><span class="wrappable">Randstad Engineering</span></dd>
+          </dl>
+        </div>
+        <h2>About the Job</h2>
+        <div id="jobBodyContent">
+    <span ID='TrackingJobBody' NAME='TrackingJobBody'><br><a target=_blank href=http://engineers.randstadusa.com/think.nsf/b2_apply1?openform&amp;jt=RF%20Engineer&amp;ParentUNID=0A6A0386357BCC5B85257A9C00520A1C&amp;frm=mon&amp;mdm=job%2Bpost&amp;nme=Job%2BBoards&amp;frm1=mon><img id=thinkenergy_apply src=http://media.monster.com/xthinkrx/template/thinkenergy-apply.jpg width=146 height=23 border=0 alt=Apply Now!></a><br><br /><p>Leading provider of wireless telecom solutions company has an  IMMEDIATE NEED for 2 RF Engineers for a 3+ month contract assignment, in the Tampa, FL area.</p><p><b>Responsibilities</b></p><ul><li>Interpret antenna system sweep</li><li>Perform optimization/trouble shoot to CDMA, EVDO and LTE the network</li><li>Travel to site to make change on the antenna system or BTS</li></ul><p><b>Requirements</b></p><ul><li>Bachelors degree in Engineering, Math or Sciences</li><li>3+  years of progressive successful development as an RF Engineer </li><li>Ability to analyze layer 2 & 3 messaging for drive test data of CDMA (ALU), EVDO (ALU & Ericsson) and LTE (Ericsson)</li><li>Experience performing optimization/trouble shoot to CDMA, EVDO and LTE the network</li><li>Possess design experiences on CDMA, EVDO and LTE include antenna system design, and site visit</li><li>Ability to work some nights as needed for project</li></ul><p><b>Benefits</b></p><ul><li>Mobilization- Demobilization to assignment if required</li><li>Per diem included in rate if required</li></ul><br /><br><br><b>This Job is located in Tampa, FL -> United States</b><br><br><br /><br><a target=_blank href=http://engineers.randstadusa.com/think.nsf/b2_apply1?openform&amp;jt=RF%20Engineer&amp;ParentUNID=0A6A0386357BCC5B85257A9C00520A1C&amp;frm=mon&amp;mdm=job%2Bpost&amp;nme=Job%2BBoards&amp;frm1=mon><img id=thinkenergy_apply src=http://media.monster.com/xthinkrx/template/thinkenergy-apply.jpg width=146 height=23 border=0 alt=Apply Now!></a><br><br /><br><br>See over 1,000 Power Plant / Energy Jobs on RandstadEngineering.com. <br><br><br /> Keywords: cdma, lte, evdo,design and optimization,wireless,cdma, gsm, cdma, tdma, rbs, radio base, base station, wireless, axe-10, axe 10, sccs, metro cell, gsm, delta r3, 900 mhz, mobile switching, station controller, global system, cme, radio base, base station, rbs, mobiltex, idem, time division multiple, code division multiple, wireless intelligent network, basestation, mobile switching, pstn, is-41, gprs, general packet radio, special mobile radio, frequency planning, is136, base station, base stations, flexent, hcpu, minicell, autoplex, wide band radio, modular cell, cdma, radio base, base station, rbs, ecp, microcell, modular cell, mini cell, system 1000, digital cellular switch, cellular switch, digital switch node, rpcn, ring peripheral, mobile station, pstn, ecp-c, interprocess message system, sm-2000, link nodes, executive cellular processor, omp-fx, ccs7, cell site, cell sites, crtu, is-634, cdma, temip, flexlm, cbsc, sc614t, iden, aex 10, aex10, wavetek, is136, is-95, mobitex, air interfaces, air interface, hlr/vlr, idemcellular tower, tower cell, cellular site, l-pile, cell tower, pcs tower, antennacell sites, antenna system, antenna systems, atci, antenna technology, loop antenna, mobile antenna, ku band, flyaway antenna, davicom, antenna monitoring, jampro, kintronic, radio antennas, omb, phasetek, phillips microtek, antenna equipment, propagation systems, broadcast antenna, rymsa, antenna manufacturer, metawave, antenna concepts, transmission antennascellular, tower, tower cell, cellular site, cell tower, pcs, tower, cell, tower, antenna, cell sites, antenna system, antenna systems, atci, antenna technology, loop antenna, mobile antenna, ku band, flyaway antenna, davicom, electronics research, inc., emr consulting, antenna monitoring, jampro, kintronic, radio antennas, omb, phasetek, microtek, antenna equipment, propagation systems, broadcast antenna, rymsa, antenna manufacturer, metawave, antenna concepts, transmission antennas, satcom, prodelin, eagle communications, alan gordon enterprises, alcatel, andrew corporation, antenna concepts, arden technologies, atci, baf communications, blonder tongue, bradley broadcast, broadcast microwave, broadcasting systems, central tower, comad communications, comsat rsi, mark antennas, comsonics, comtech antenna, davicom technologies, dawn satellite, dielectric communications, diversified marketing, flash technology, griffiths broadcast, hall electronics, holzberg, institutional systems service, jampro, kline towers, lnr communications, lunar industries, micro communications, microwave radio, mobile-cam, nii norsat, nucomm, peter-lisand, propagation systems, rf technology, rfs broadcast, rohde & schwarz, scientific-atlanta, shively labs, shook electronics, sintel systems, systems with reliability, tecnec, telex communications, tower network services, triad communications, wescam, will-burt, tropospheric, scatter, loss calculations, isolators, diplexers, duplexers, rf loss, rf cabling, ups equipment, if patchingengineering degree, degree in engineering, bs degree, switch engineer, switch technician, magnetic resonant, antenna design, rf design, rf engineer, antenna engineer, rf circuits, rf engineering, rf products, rf applications, rf designer, rf devices, rf designs, rf planning, rf engineers, radio engineer, rf development engineer, rf development, radio engineering, radio frequency engineer, radio frequency engineering, rf circuit design, rf systems engineer, bsee, rf, attenuator, balanced module, base station, bonding pad, bonding wire, code-division, code division, conversion compression, cross modulation, ct-1, ct-2, db bandwidth, die attach, dielectric resonator, digital driver, digital modulation, downconverter, downlink, dv/dt, dynamic range, eutectic, flatpack, fmax, phase noise, frequency pull, frequency push, gain block, gmax, intermodulation, hybrid integrated, hybrid circuit, hysteresis, gain compression, incidental fm, insertion loss, integrated spurious, ion implantation, limiting amplifier, mechanical tuning, micamp, microstrip, mobile telephone switch, modulation response, network analyzer, noise figure, noise floor, off resonance, oscillator load, passband, passivation, photo etch, tuning drift, pulse amplifier, quadrature, resonant frequency, roaming, rural service area, settling time, bandpass, skirt spurious, slew rate, signal gain, gain flatness, s-parameter, spread-spectrum, spurious signal, stripline, telepoint, thermocompression, transponder, tuning impedance, input impedence, monotonicity, tuning repeatability, intermodulation, uplink, varactor, wilkenson combiner, wilkenson splitter, wedge bond, yig, yig tuned, impedance, modulation, attenuator, propagation, antenna, modulators, demodulators, synthesizers, noise amplifers, rf amplifier, splitter, combiner, directional coupler, amplifers, radio communications, receivers, tranmitters, rf circuits, rf design</span>
+  <img src="http://media.newjobs.com/jobview_standard/images/pixel.gif" height="1" width="1" alt="" style="margin:0px"></div>
+        <div style="margin-top:10px" data-enhance="false"><script src="http://leadgenservice.monster.com/ScriptHandler.ashx?PositionAdID=115365850&amp;ChannelAlias=MONS&amp;CompanyID=372243&amp;Placeholder=JobView&amp;VerifyEnabledForJobView=true" type="text/javascript"></script></div>
+      </div>
+    </div><div id="bodycolbottom">&#160;</div></div>
+</div><!--JT ID: 20383-->
 </div>
 
     <div id="jobviewFooter" data-role="content" data-theme="c" data-content-theme="c">
@@ -598,8 +608,8 @@ LogUrl :'http://m.monster.com/log.ashx?PositionAdID=115528500&folderid=125873819
         To apply, please contact the company directly at:<br /><br />
 
         <div class="msgTitle">
-Chuck Shirley<br />
-CyberCoders<br />
+RandstadEngineering.com Job Number 94012<br />
+Randstad Engineering<br />
 		</div>
 
     </div>
@@ -614,7 +624,7 @@ CyberCoders<br />
     </div>
     <div id="popupShareJob" data-overlay-theme="a">
     
-            <div><a href="/SavedJobs/Save?jobId=115528500&amp;seoUrl=%2FSuperstar-IOS-Engineer-IOS-Iphone-Product-Web-Social-Job-West-Hollywood-CA-US-115528500&amp;ch=MONS" onclick="WebtrendTagging('/saveJob.evt', 'SaveJob', 'S');" mns_rt="SaveToFile"  data-ajax="false" data-role="button" data-iconpos="right" data-icon="saved-job-purple" title="Save">Save</a></div>
+            <div><a href="/SavedJobs/Save?jobId=115365850&amp;seoUrl=%2FRF-Engineer-CDMA-LTE-EVDO-Design-Optimization-Wireless-Job-Tampa-FL-US-115365850&amp;ch=MONS" onclick="WebtrendTagging('/saveJob.evt', 'SaveJob', 'S');" mns_rt="SaveToFile"  data-ajax="false" data-role="button" data-iconpos="right" data-icon="saved-job-purple" title="Save">Save</a></div>
     
         
         
@@ -624,7 +634,7 @@ CyberCoders<br />
         </a></div>
     
         
-            <div><a id="btnShare" href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4fd859687aa5cf8a" addthis:url="http://jobview.monster.com/Superstar-IOS-Engineer-IOS-Iphone-Product-Web-Social-Job-West-Hollywood-CA-US-115528500.aspx" class="addthis_button" data-iconpos="right" data-role="button" data-icon="share" title="Share">Share</a></div>
+            <div><a id="btnShare" href="http://www.addthis.com/bookmark.php?v=250&amp;pubid=xa-4fd859687aa5cf8a" addthis:url="http://jobview.monster.com/RF-Engineer-CDMA-LTE-EVDO-Design-Optimization-Wireless-Job-Tampa-FL-US-115365850.aspx" class="addthis_button" data-iconpos="right" data-role="button" data-icon="share" title="Share">Share</a></div>
             <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4fd859687aa5cf8a"> </script>
             <script type="text/javascript">                var addthis_config = { ui_language: "en" }  </script>
             <script type="text/javascript">                var addthis_exclude = 'email';</script>
@@ -661,12 +671,12 @@ CyberCoders<br />
             <legend title="Email Address"></legend>
             <input type="text" name="emailTo" id="emailTo" value="" class="required email" placeholder="Email to(use comma for multiple email)" title="Email to(use comma for multiple email)"/>
             <input type="email" name="emailFrom" id="emailFrom" value="" class="required email" placeholder= "Enter your email address" title="Enter your email address"/>
-            <input name = "jobId" type="hidden" value="115528500" />
-            <input name = "title" type="hidden" value="Superstar IOS Engineer - IOS, Iphone, Product, Web, Social" />
-            <input name = "city" type="hidden" value="West Hollywood" />
-            <input name = "state" type="hidden" value="CA" />
+            <input name = "jobId" type="hidden" value="115365850" />
+            <input name = "title" type="hidden" value="RF Engineer - CDMA, LTE, EVDO / Design and Optimization / Wireless" />
+            <input name = "city" type="hidden" value="Tampa" />
+            <input name = "state" type="hidden" value="FL" />
             <input name = "country" type="hidden" value="US" />
-            <input name = "companyName" type="hidden" value="CyberCoders" />
+            <input name = "companyName" type="hidden" value="Randstad Engineering" />
             <input type="hidden" name="ch" id="ch" value="MONS" />
         </fieldset>
     </div>
@@ -683,7 +693,7 @@ CyberCoders<br />
                 
 
 <h6>
-View Monster in - <a data-ajax='false' href='http://www.monster.com/?fullsite=true&re=fromMobileApp' title='Full Site'>Full Site</a><br />    Copyright 2012 Monster - All rights reserved - V: 2012.11.0.88-323
+View Monster in - <a data-ajax='false' href='http://www.monster.com/?fullsite=true&re=fromMobileApp' title='Full Site'>Full Site</a><br />    Copyright 2012 Monster - All rights reserved - V: 2012.11.0.88-314
 </h6>
       
 <style type="text/css">
