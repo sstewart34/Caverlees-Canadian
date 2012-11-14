@@ -17,7 +17,7 @@ class RecommenderAlgorithm(object):
 	f = open('languages.txt','r')
 	for line in f.readlines():
 		self.languages.append((line.lower()).strip())
-	print self.languages
+	print len(self.languages)
 	count = 0
 	for job in self.jobs:
 		topic = job['topic']
@@ -37,8 +37,11 @@ class RecommenderAlgorithm(object):
 	print count
         sorted_list = [x for x in self.index.iteritems()]
 	sorted_list.sort(key=lambda x: x[1]['count']) # sort by count
+	sorted_list.reverse()
 	for item in sorted_list:
-		print item[0], item[1]['count']
+		print item[0]
+	for item in sorted_list:
+		print item[1]['count']
 	print len(sorted_list)
  
 def main():   
