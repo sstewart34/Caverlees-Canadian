@@ -4,7 +4,7 @@ from collections import Counter
 import re
 
 def tokenize(tweet):
-	tokens = re.findall("[a-zA-Z]+", tweet.lower())
+	tokens = re.findall("[a-zA-Z.#+]+", tweet.lower())
 	return tokens
 
 class RecommenderAlgorithm(object):
