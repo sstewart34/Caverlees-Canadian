@@ -2,6 +2,7 @@ import utils
 import collections
 from collections import Counter
 import re
+import json
 
 def tokenize(tweet):
 	tokens = re.findall("[a-zA-Z.#+]+", tweet.lower())
@@ -69,13 +70,23 @@ class RecommenderAlgorithm(object):
 
     def recommend(self, howMany):
 	pass
- 
+
+    def printToFile(self, fileName):
+	file = open(str(fileName), 'w')
+	if(fileName == 'indexByTopics.json'):
+		file.write(json.dumps(self.indexByTopic))
+	else:
+		file.write(json.dumps(self.indexByLanguage))
+	file.close()
+
 def main():   
     docs = utils.read_docs()
     recommend = RecommenderAlgorithm(docs)
     recommend.createLanguageList()              
     recommend.createTopicList()
     recommend.recommend(1)  
+    recommend.printToFile('indexByTopics.json')
+    recommend.printToFile('indexByLanguages.json')
                  
 if __name__=="__main__":
     main()
