@@ -7,6 +7,22 @@ from Tkinter import *
 import tkMessageBox
 import Tkinter
 
+class MyClickButton():
+    def __init__(self, Button, label, row, column):
+	self.clicked = False
+	self.Button = Button
+        self.Button.bind("<Button-1>", lambda e:self.pressed())
+	self.t = label 
+	self.r = row
+	self.c = column
+    
+    def pressed(self):
+	if self.clicked == True: 
+		self.clicked = False 
+	else: 
+		self.clicked = True
+	print self.t, self.clicked
+
 def tokenize(tweet):
 	tokens = re.findall("[a-zA-Z.#+]+", tweet.lower())
 	return tokens
@@ -18,6 +34,8 @@ class RecommenderAlgorithm(object):
 	self.indexByTopic = {}
 	self.languages = []
 	self.buttons = []
+	self.window = Tkinter.Tk()
+	self.windowVisible = True
 
     def createLanguageList(self):	# Creates an index by languages
 	f = open('languages.txt','r')
@@ -74,15 +92,23 @@ class RecommenderAlgorithm(object):
 	#	print item[0], item[1]
 	pass
 
+    # Users provided languages are in userKnownLanguages
+    # self.window stuff is the UI
     def recommend(self, howMany):
+	userKnownLanguages = []
 	for button in self.buttons:
-		print type(button)
-		#text = button.text
-		#var = button.var
-		#if var == 1:
-		#	print text, " was pressed!" 
+		if(button.clicked == True):
+			userKnownLanguages.append(button.t)
+	print userKnownLanguages
+	self.window.destroy()
+	self.windowVisible = False
+	input = raw_input("")
 	pass
 
+    """
+    def recommend(self, howMany):
+	pass
+    """
     def printToFile(self, fileName):
 	file = open(str(fileName), 'w')
 	if(fileName == 'indexByTopics.json'):
@@ -90,10 +116,9 @@ class RecommenderAlgorithm(object):
 	else:
 		file.write(json.dumps(self.indexByLanguage))
 	file.close()
-
+    
     def userInterface(self):
-	top = Tkinter.Tk()
-	text = Text(top, height=1)
+	text = Text(self.window, height=1)
 	text.insert(INSERT,"Select the language(s) that you know:")
 	#text.grid(row = 0, column = 5)
 	self.languages.sort(key=lambda x: x[0])
@@ -101,15 +126,22 @@ class RecommenderAlgorithm(object):
 	ycol = 0
 	for language in self.languages:
 		checkVar = IntVar()
-		self.buttons.append(Tkinter.Checkbutton(top, variable = checkVar, width = 14, text = language, onvalue = 1, offvalue = 0, height=5).grid(row = xcol, column = ycol))
+		button = Tkinter.Checkbutton(self.window, variable = checkVar, width = 14, text = language, height=5)
+		button.grid(row=xcol, column=ycol)
+		button.bind("<Button-1>", lambda e: myButton.pressed())
+		myButton = MyClickButton(button, str(language), xcol, ycol)
+		self.buttons.append(myButton)
 		if ycol > 10:
-			xcol += 1
-			ycol = 0 
-		else:
-			ycol += 1
-
-	B1 = Tkinter.Button(top, text = "Done Selecting", command = self.recommend(1)).grid(row = xcol+1, column = ycol-2)
-	top.mainloop()
+                        xcol += 1
+                        ycol = 0
+                else:
+                        ycol += 1
+        count = 0
+	B1 = Tkinter.Button(self.window, text = "Done Selecting")
+	B1.grid(row=xcol+1,column=ycol-2)
+	B1.bind("<Button-1>", lambda e: self.recommend(1))
+	while self.windowVisible == True:
+		self.window.mainloop()
 	pass
 
 def main():   
@@ -119,7 +151,8 @@ def main():
     recommend.createTopicList()
     #recommend.printToFile('indexByTopics.json')
     #recommend.printToFile('indexByLanguages.json')
-    recommend.userInterface();    
+    recommend.userInterface()
+    #recommend.recommend(1)    
              
 if __name__=="__main__":
     main()
