@@ -28,6 +28,18 @@ def tokenize(tweet):
 	return tokens
 
 class RecommenderAlgorithm(object):
+    """
+	Class variables: 
+		- All the job postings
+		- An index of all languages from the job postings by:
+			-- Topic
+				Contains topic (i.e. AI) with a language list, and counts
+			-- Language
+				Contains language (i.e. C++) with a topic list and counts
+		- A list of every language in the knowledge base
+		- All the user interface check buttons
+		- The actual UI window
+    """
     def __init__(self, docs):
 	self.jobs = docs
 	self.indexByLanguage = {}
@@ -37,7 +49,15 @@ class RecommenderAlgorithm(object):
 	self.window = Tkinter.Tk()
 	self.windowVisible = True
 
-    def createLanguageList(self):	# Creates an index by languages
+    """
+	Create the index by language
+	   Open the languages file
+	   Read in all languages and store in class
+	   Go through all jobs and create the index - similar to homework 1/2
+    	The index has language -> {unique times, total times, topics -> {topic -> count}}
+	   Sorts the index by count (total) 
+    """
+    def createLanguageList(self):
 	f = open('languages.txt','r')
 	for line in f.readlines():
 		self.languages.append((line.lower()).strip())
@@ -75,6 +95,12 @@ class RecommenderAlgorithm(object):
 	print len(sorted_list)
 	pass
 
+    """
+        Create the index by topic
+           Go through all jobs and create the index - similar to homework 1/2
+        The index has topic -> {languages -> {language -> count}}
+           Sorts the index alphabetically
+    """
     def createTopicList(self):	# Creates an index by topics
 	for language in self.indexByLanguage:
 		for topic in self.indexByLanguage[language]['topics']:
@@ -82,8 +108,6 @@ class RecommenderAlgorithm(object):
 				self.indexByTopic[topic] = {'languages':{}}	
 				self.indexByTopic[topic]['languages'][language] = self.indexByLanguage[language]['topics'][topic] 
 			else:
-				#if language not in self.indexByTopic[topic]['languages']:
-					#self.indexByTopic[topic]['languages'][language] = 0
 				self.indexByTopic[topic]['languages'][language] = self.indexByLanguage[language]['topics'][topic]
 	
 	sorted_list = [x for x in self.indexByTopic.iteritems()]
@@ -102,12 +126,16 @@ class RecommenderAlgorithm(object):
 	print userKnownLanguages
 	self.window.destroy()
 	self.windowVisible = False
-	input = raw_input("")
+	input = raw_input("") # Wait for input from console just to exit the program.
 	pass
 
     """
     def recommend(self, howMany):
 	pass
+    """
+
+    """
+	Will print a specific index to a file
     """
     def printToFile(self, fileName):
 	file = open(str(fileName), 'w')
@@ -117,13 +145,18 @@ class RecommenderAlgorithm(object):
 		file.write(json.dumps(self.indexByLanguage))
 	file.close()
     
+    """
+	Creates a user interface with check buttons. Allows the user to
+	select which languages/skills he/she knows and proceed. The information
+	will be captured in the recommend() function.
+    """
     def userInterface(self):
-	text = Text(self.window, height=1)
+	text = Text(self.window, height=1, width=37)
 	text.insert(INSERT,"Select the language(s) that you know:")
-	#text.grid(row = 0, column = 5)
+	text.grid(row = 0, column = 0)
 	self.languages.sort(key=lambda x: x[0])
-	xcol = 5
-	ycol = 0
+	xcol = 5 
+	ycol = 5
 	for language in self.languages:
 		checkVar = IntVar()
 		button = Tkinter.Checkbutton(self.window, variable = checkVar, width = 14, text = language, height=5)
@@ -131,9 +164,9 @@ class RecommenderAlgorithm(object):
 		button.bind("<Button-1>", lambda e: myButton.pressed())
 		myButton = MyClickButton(button, str(language), xcol, ycol)
 		self.buttons.append(myButton)
-		if ycol > 10:
+		if ycol > 12:
                         xcol += 1
-                        ycol = 0
+                        ycol = 5
                 else:
                         ycol += 1
         count = 0
