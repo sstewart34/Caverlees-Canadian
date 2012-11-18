@@ -112,8 +112,8 @@ class RecommenderAlgorithm(object):
 	
 	sorted_list = [x for x in self.indexByTopic.iteritems()]
 	sorted_list.sort(key=lambda x: x[0]) # sort alphabetically by language
-	#for item in sorted_list:
-	#	print item[0], item[1]
+	for item in sorted_list:
+		print item[0], item[1]
 	pass
 
     # Users provided languages are in userKnownLanguages
@@ -153,10 +153,10 @@ class RecommenderAlgorithm(object):
     def userInterface(self):
 	text = Text(self.window, height=1, width=37)
 	text.insert(INSERT,"Select the language(s) that you know:")
-	text.grid(row = 0, column = 0)
+	#text.grid(row = 0, column = 0)
 	self.languages.sort(key=lambda x: x[0])
 	xcol = 5 
-	ycol = 5
+	ycol = 0
 	for language in self.languages:
 		checkVar = IntVar()
 		button = Tkinter.Checkbutton(self.window, variable = checkVar, width = 14, text = language, height=5)
@@ -164,9 +164,9 @@ class RecommenderAlgorithm(object):
 		button.bind("<Button-1>", lambda e: myButton.pressed())
 		myButton = MyClickButton(button, str(language), xcol, ycol)
 		self.buttons.append(myButton)
-		if ycol > 12:
+		if ycol > 10:
                         xcol += 1
-                        ycol = 5
+                        ycol = 0
                 else:
                         ycol += 1
         count = 0
@@ -184,7 +184,7 @@ def main():
     recommend.createTopicList()
     #recommend.printToFile('indexByTopics.json')
     #recommend.printToFile('indexByLanguages.json')
-    recommend.userInterface()
+    #recommend.userInterface()
     #recommend.recommend(1)    
              
 if __name__=="__main__":
