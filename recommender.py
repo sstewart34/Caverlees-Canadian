@@ -48,6 +48,7 @@ class RecommenderAlgorithm(object):
 	self.buttons = []
 	self.window = Tkinter.Tk()
 	self.windowVisible = True
+	self.listbox = []
 
     """
 	Create the index by language
@@ -112,8 +113,8 @@ class RecommenderAlgorithm(object):
 	
 	sorted_list = [x for x in self.indexByTopic.iteritems()]
 	sorted_list.sort(key=lambda x: x[0]) # sort alphabetically by language
-	for item in sorted_list:
-		print item[0], item[1]
+	#for item in sorted_list:
+	#	print item[0], item[1]
 	pass
 
     # Users provided languages are in userKnownLanguages
@@ -151,28 +152,52 @@ class RecommenderAlgorithm(object):
 	will be captured in the recommend() function.
     """
     def userInterface(self):
-	text = Text(self.window, height=1, width=37)
+	mainFrame = Tkinter.Frame(self.window)
+	mainFrame.pack()
+
+	textFrame = Tkinter.Frame(mainFrame)
+	text = Text(textFrame, height=1, width=37)
 	text.insert(INSERT,"Select the language(s) that you know:")
-	#text.grid(row = 0, column = 0)
+	text.grid(row = 0, column = 0)
+	textFrame.pack(side = BOTTOM)
+
 	self.languages.sort(key=lambda x: x[0])
 	xcol = 5 
-	ycol = 0
+	ycol = 5
+
+	checkFrame = Tkinter.Frame(mainFrame)
 	for language in self.languages:
 		checkVar = IntVar()
-		button = Tkinter.Checkbutton(self.window, variable = checkVar, width = 14, text = language, height=5)
+		button = Tkinter.Checkbutton(checkFrame, variable = checkVar, width = 14, text = language, height=5)
 		button.grid(row=xcol, column=ycol)
 		button.bind("<Button-1>", lambda e: myButton.pressed())
 		myButton = MyClickButton(button, str(language), xcol, ycol)
 		self.buttons.append(myButton)
-		if ycol > 10:
+		if ycol > 12:
                         xcol += 1
-                        ycol = 0
+                        ycol = 5
                 else:
                         ycol += 1
-        count = 0
-	B1 = Tkinter.Button(self.window, text = "Done Selecting")
+	checkFrame.pack(side = BOTTOM)
+
+        count = 0	
+	listFrame = Tkinter.Frame(mainFrame)
+	list = Tkinter.Listbox(listFrame, selectmode=SINGLE, yscrollcommand=True)
+	count  = 1
+	for topic in self.indexByTopic:
+		list.insert(count, str(topic))
+		count += 1
+	list.grid(row = xcol+1, column=0)
+	listFrame.pack(side = BOTTOM)
+
+	xcol += 1	
+
+	doneFrame = Tkinter.Frame(mainFrame)
+	B1 = Tkinter.Button(doneFrame, text = "Done Selecting")
 	B1.grid(row=xcol+1,column=ycol-2)
 	B1.bind("<Button-1>", lambda e: self.recommend(1))
+	doneFrame.pack(side = BOTTOM)
+
 	while self.windowVisible == True:
 		self.window.mainloop()
 	pass
@@ -184,7 +209,7 @@ def main():
     recommend.createTopicList()
     #recommend.printToFile('indexByTopics.json')
     #recommend.printToFile('indexByLanguages.json')
-    #recommend.userInterface()
+    recommend.userInterface()
     #recommend.recommend(1)    
              
 if __name__=="__main__":
