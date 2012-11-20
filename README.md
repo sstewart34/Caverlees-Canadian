@@ -31,16 +31,28 @@ crawler.py
 	This file crawls m.monster.com. It will grab the file topics.txt to query m.monster.com with each of the topics. The output of crawler.py will be to create the DATA/ folder.
 
 indexByLanguages.json
+	This file contains a dictionary of languages. The dictionary is as follows:
+	language -> {unique times, total times, topics -> {topic -> count}}
 
 indexByTopics.json
+	This file contains a dictionary of topics (the ones we provide). The dictionary is as follows:
+	topic -> {languages -> {language -> count}}
+	Each topic may also contain urls to pages; not sure yet on the final output.
 
 jobs.json
+	This is a json file of all of the job descriptions that we crawled from m.monster.com for all of the topics.
+	The format of the file is as follows:
+	{topic -> name, jobdescription -> description}
 
 langaugedata.xlsx
+	The top langauges are stored in this excel spreadsheet, and a long tailed distribution graph is shown. This is up to and including checkpoint 1 (~850 job postings).
 
 laguagedatac2.xlsx
+	The top langauges are stored in this excel spreadsheet, and a long tailed distributio
+n graph is shown. This is up to and including checkpoint 2 (~1650 job postings).
 
 languages.txt
+	A list of the programming languages of interest. I manually searched through about 50 job descriptions and added more languages that I didn't include the first time. Our program cannot determine more programming languaes on its own, because not all of the job postings have a required skills section with languages only listed. Another problem is that some languages appear in different ways: rubyonrails, ruby-on-rails. Our program cannot capture those correctly (without having two seperate entries for them).
 
 parse.py
 
