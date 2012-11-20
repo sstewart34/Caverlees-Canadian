@@ -152,8 +152,11 @@ class RecommenderAlgorithm(object):
 	will be captured in the recommend() function.
     """
     def userInterface(self):
-	mainFrame = Tkinter.Frame(self.window)
+	mainFrame = Tkinter.Canvas(self.window)
 	mainFrame.pack()
+
+	swin = Tkinter.Scrollbar(mainFrame, width=10, orient=VERTICAL)
+        swin.pack(fill=Y,side=RIGHT,padx=0,pady=0)
 
 	textFrame = Tkinter.Frame(mainFrame)
 	text = Text(textFrame, height=1, width=37)
@@ -207,8 +210,8 @@ def main():
     recommend = RecommenderAlgorithm(docs)
     recommend.createLanguageList()              
     recommend.createTopicList()
-    #recommend.printToFile('indexByTopics.json')
-    #recommend.printToFile('indexByLanguages.json')
+    recommend.printToFile('indexByTopics.json')
+    recommend.printToFile('indexByLanguages.json')
     recommend.userInterface()
     #recommend.recommend(1)    
              
