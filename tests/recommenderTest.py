@@ -1,4 +1,5 @@
 from operator import itemgetter
+import recommender
 import unittest
 
 # Case1: User knows language not in the list of languages needed for that topic

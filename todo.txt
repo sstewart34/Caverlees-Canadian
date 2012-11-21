@@ -1,19 +1,25 @@
 1. Parse
 	- Create a JSON file with a dictionary of company listings
 	[{"topic":topic, "url":url, "companyName":companyName, "jobDescription":description}]
-
+	DONE
 2. Create tf for each document.
-
+	DONE
 3. Create PDF to turn in.
-
+	DONE
 4. Create stats for the initial job descriptions
 	- tf?
 	- languages?
 	- length of job description?
 	- number of languages?
+	DONE
 
 5. Display stats for checkpoint1
+	DONE
 
 6. Recommender algorithm
+	DONE
 
+7. Cluster topics based on languages
+
+8. Determine how close user is to each topic based on the languages they know
  
