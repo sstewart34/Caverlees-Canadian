@@ -55,13 +55,23 @@ languages.txt
 	A list of the programming languages of interest. I manually searched through about 50 job descriptions and added more languages that I didn't include the first time. Our program cannot determine more programming languaes on its own, because not all of the job postings have a required skills section with languages only listed. Another problem is that some languages appear in different ways: rubyonrails, ruby-on-rails. Our program cannot capture those correctly (without having two seperate entries for them).
 
 parse.py
+	This file will not be used by the user, it is used for parsing data that has previously been pulled by crawler.py. This file will traverse structured directories of html pages and will parse each page and identify the skills on this page. This information will be displayed in the jobs.json file which will later be utilized in other areas of the program.
 
 recommender.py
+	Currently this file is used for implementing the core algorithm and for displaying the gui to use this file the user needs to call 'python recommender.py jobs.json' which passes in the jobs.json data which the program will then use to suggest skills for the user to learn
 
 tests/
+	This is a directory that currently only contains a single file, recommenderTest.py. As its name would suggest this file tests the recommender.py program
 
 todo.txt
+	This is an outline file that is written for the purposes of keeping the team on-track and breaks the project down into goals that members need to achieve.
 
 topics.txt
+	A list of all topics to be searched for. Each topic is on a seperate line and is used by the crawler.py file to pull data from monster.com. White spaces and special characters are allowed in this file, but all characters must be ASCII encoded. 
 
 utils.py
+	used solely for the purpose of containing a function that reads a file and returns a dict representation of a json file.
+
+Future Changes
+==============
+Plotting each topic and the user in an n-dimensional vector space where each axis is a skill. Inform the user what topic s/he is closest to. Later base the recommender off of what language would bring the user's point closer to the topic's point
