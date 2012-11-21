@@ -9,7 +9,7 @@ def stem(line):
 	tokens = re.split("a\t", str(line))
 	return tokens	
 
-class Parse(object):x
+class Parse(object):
     def __init__(self, dir):
         self.dir = dir
         pass
@@ -59,7 +59,7 @@ class Parse(object):x
                 description = stem(str(descrip.get_text().strip().encode('utf8')))
                 #print descrip.get_text()
                 dictionary['jobDescription'] = description[0]
-                dictionary['topic'] = topic.replace('+',' ')
+                dictionary['topic'] = 'testTopic' 
             allPosts.append(dictionary)
             
             file.close()
@@ -69,10 +69,11 @@ class Parse(object):x
                 f.write(json.dumps(item))
                 f.write('\n')
                 f.close()
+	    return allPosts[0]
         pass
 
 def main():
-	parser = Parse(str(sys.argv[1]));
+    parser = Parse(str(sys.argv[1]));
     parser.parseFile();
 
 if __name__ == "__main__":
