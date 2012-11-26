@@ -155,14 +155,15 @@ class RecommenderAlgorithm(object):
 	mainFrame = Tkinter.Canvas(self.window)
 	mainFrame.pack()
 
-	swin = Tkinter.Scrollbar(mainFrame, width=10, orient=VERTICAL)
-        swin.pack(fill=Y,side=RIGHT,padx=0,pady=0)
+	#swin = Tkinter.Scrollbar(mainFrame, width=10, orient=VERTICAL)
+    	#swin.pack(fill=Y,side=RIGHT,padx=0,pady=0)
 
 	textFrame = Tkinter.Frame(mainFrame)
 	text = Text(textFrame, height=1, width=37)
 	text.insert(INSERT,"Select the language(s) that you know:")
 	text.grid(row = 0, column = 0)
-	textFrame.pack(side = BOTTOM)
+	
+	textFrame.pack(side = TOP)
 
 	self.languages.sort(key=lambda x: x[0])
 	xcol = 5 
@@ -171,7 +172,7 @@ class RecommenderAlgorithm(object):
 	checkFrame = Tkinter.Frame(mainFrame)
 	for language in self.languages:
 		checkVar = IntVar()
-		button = Tkinter.Checkbutton(checkFrame, variable = checkVar, width = 14, text = language, height=5)
+		button = Tkinter.Checkbutton(checkFrame, height=1, pady=0, variable = checkVar, width = 14, text = language)
 		button.grid(row=xcol, column=ycol)
 		button.bind("<Button-1>", lambda e: myButton.pressed())
 		myButton = MyClickButton(button, str(language), xcol, ycol)
@@ -181,25 +182,34 @@ class RecommenderAlgorithm(object):
                         ycol = 5
                 else:
                         ycol += 1
-	checkFrame.pack(side = BOTTOM)
+	checkFrame.pack(side = TOP)
 
         count = 0	
+	
 	listFrame = Tkinter.Frame(mainFrame)
-	list = Tkinter.Listbox(listFrame, selectmode=SINGLE, yscrollcommand=True)
-	count  = 1
+	list = Tkinter.Listbox(listFrame, selectmode=SINGLE, width=30)
+	topics = []	
 	for topic in self.indexByTopic:
-		list.insert(count, str(topic))
+		topics.append(str(topic))
+	
+	topics.sort(key=lambda x: x[0])
+	count = 1
+	for topic in topics:
+		list.insert(count, topic)
 		count += 1
+
 	list.grid(row = xcol+1, column=0)
-	listFrame.pack(side = BOTTOM)
+	listFrame.pack(side = TOP)
 
 	xcol += 1	
-
+	
 	doneFrame = Tkinter.Frame(mainFrame)
 	B1 = Tkinter.Button(doneFrame, text = "Done Selecting")
 	B1.grid(row=xcol+1,column=ycol-2)
 	B1.bind("<Button-1>", lambda e: self.recommend(1))
-	doneFrame.pack(side = BOTTOM)
+	doneFrame.pack(side = TOP)
+
+	#swin.config(command=mainFrame.yview)
 
 	while self.windowVisible == True:
 		self.window.mainloop()
