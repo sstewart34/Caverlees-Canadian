@@ -20,6 +20,10 @@
 	DONE
 
 7. Cluster topics based on languages
+	Sam/Brady
 
 8. Determine how close user is to each topic based on the languages they know
- 
+	Sam/Brady
+
+9. Complete user interface
+	Nick? 
