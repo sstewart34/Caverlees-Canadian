@@ -1,14 +1,14 @@
 from bottle import route, run, template
+from mako.template import Template
 import bottle
 import json
 
 @route('/')
 def index():
-    f = open('languages.txt', 'r')
-    msg = ''
-    for line in f.readlines():
-        msg += line.lower().strip
-    return msg
+    open(jobs.json)
+    #data = json.load(open(jobs.json))
+    close(jobs.json)
+    return Template("hello ${data}!").render(data="world")
 
 @route('/help')
 def index():
