@@ -28,6 +28,8 @@ def nearest(usr):
     """
     takes in a dict of languages -> int representing a user
     returns a unicode string which is the nearest topic
+
+    this uses K-nn clusters with a K of 1, where each topic is a cluster
     """
     max = 0
     top = ''
