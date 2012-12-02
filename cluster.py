@@ -51,9 +51,3 @@ def difference(topic, usr):
             final[lang] = topic[lang]
     done = sorted(final, key=final.get)
     return done[::-1] #list reveral must be done this way (not sure why)
-    
-
-topic = 'network security'
-test = {'python':1, 'office':1, 'ruby':1, 'C++':1, 'MATLAB':1, 'HTML':1, 'unix':1, 'PHP':1, 'Javascipt':1, 'microsoft':1}
-close = nearest(test)
-print difference(data['network security']['languages'], test)
