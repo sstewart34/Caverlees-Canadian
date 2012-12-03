@@ -1,8 +1,8 @@
 import json
 import math
 
-with open('indexByTopics.json', 'rb') as fp:
-        data = json.load(fp)
+#with open('indexByTopics.json', 'rb') as fp:
+#        data = json.load(fp)
 
 def cosine(vec1,vec2):
     """
@@ -24,7 +24,7 @@ def cosine(vec1,vec2):
             dotp += ( vec1[lang] * vec2[lang] )
     return float( dotp / ( mag1 * mag2 ) )
 
-def nearest(usr):
+def nearest(usr, data):
     """
     takes in a dict of languages -> int representing a user
     returns a unicode string which is the nearest topic

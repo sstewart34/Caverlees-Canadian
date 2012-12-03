@@ -6,6 +6,7 @@ import json
 from Tkinter import *
 import tkMessageBox
 import Tkinter
+import cluster
 
 class MyClickButton():
     def __init__(self, Button, label, row, column):
@@ -120,11 +121,18 @@ class RecommenderAlgorithm(object):
     # Users provided languages are in userKnownLanguages
     # self.window stuff is the UI
     def recommend(self, howMany):
-	userKnownLanguages = []
+	userKnownLanguages = {}
 	for button in self.buttons:
 		if(button.clicked == True):
-			userKnownLanguages.append(button.t)
+			if button.t not in userKnownLanguages:
+				userKnownLanguages[button.t] = 1
 	print userKnownLanguages
+
+	# Determine how close the user is to each topic currently
+	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
+	print nearestCluster
+	print self.indexByTopic
+	
 	self.window.destroy()
 	self.windowVisible = False
 	input = raw_input("") # Wait for input from console just to exit the program.
