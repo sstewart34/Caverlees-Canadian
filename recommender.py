@@ -171,8 +171,8 @@ class RecommenderAlgorithm(object):
 	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
 	print "Based on the languages you already know, ", 
 	for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
-            print x,
-    	print ", you are most capable of working in the field of ", nearestCluster, "."
+            print x, ",",
+    	print " you are most capable of working in the field of ", nearestCluster, "."
 		
 	self.window.destroy()
 	self.windowVisible = False
