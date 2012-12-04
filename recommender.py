@@ -64,7 +64,7 @@ class RecommenderAlgorithm(object):
 	f = open('languages.txt','r')
 	for line in f.readlines():
 		self.languages.append((line.lower()).strip())
-	print len(self.languages)
+	#print len(self.languages)
 	count = 0
 	for job in self.jobs:
 		topic = job['topic']
@@ -85,7 +85,7 @@ class RecommenderAlgorithm(object):
 		count += 1
 	for language in self.indexByLanguage:
 		self.indexByLanguage[language]['unique'] = len(self.indexByLanguage[language]['topics'])
-	print count
+	#print count
         sorted_list = [x for x in self.indexByLanguage.iteritems()]
 	sorted_list.sort(key=lambda x: x[1]['count']) # sort by count
 	sorted_list.reverse()
@@ -95,7 +95,7 @@ class RecommenderAlgorithm(object):
 	#	print item[0]
 	#for item in sorted_list:
 	#	print  item[1]['count']#, item[1]['topics']
-	print len(sorted_list)
+	#print len(sorted_list)
 	pass
 
     """
@@ -127,7 +127,7 @@ class RecommenderAlgorithm(object):
 		if(button.clicked == True):
 			if button.t not in userKnownLanguages:
 				userKnownLanguages[button.t] = 1
-	print userKnownLanguages
+	#print userKnownLanguages
 
 	topicOfChoice = ""
 	# Grab the topic the user selected
@@ -136,32 +136,44 @@ class RecommenderAlgorithm(object):
 		topicOfChoice = self.listbox.get(index)
 	except IndexError:
 		pass
-	print topicOfChoice
+	#print topicOfChoice
     	unknownLanguages = []
         
-        for key in self.indexByTopic[topicOfChoice]['languages']:
-            if key not in userKnownLanguages:
-                unknownLanguages.append({'language':key, 'count':self.indexByTopic[topicOfChoice]['languages'][key]})
-        
-        sortedList = (sorted(unknownLanguages, key=itemgetter('count')))
-        
-        if len(sortedList) == 0:
+        if topicOfChoice == "":
+            print "Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following: "
+            for x in dict(sorted(self.indexByLanguage.iteritems(), key=itemgetter(1),reverse=True)[:3]):
+                print x,
             print
-            print "You already know all the languages that you need to get a job in ", topicOfChoice, ". You are TOO SMART"
-            print
-            return ''
-        print
-	topicToLearn = sortedList[len(sortedList)-1]['language']
-	if topicToLearn == 'office':
-		topicToLearn = 'microsoft ' + topicToLearn
+            print 
         
-	print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice 
-        print
-                    
+        else:
+            for key in self.indexByTopic[topicOfChoice]['languages']:
+                if key not in userKnownLanguages:
+                    unknownLanguages.append({'language':key, 'count':self.indexByTopic[topicOfChoice]['languages'][key]})
+            
+            sortedList = (sorted(unknownLanguages, key=itemgetter('count')))
+            
+            if len(sortedList) == 0:
+                print
+                print "You already know all the languages that you need to get a job in ", topicOfChoice, ". You are TOO SMART"
+                print
+                return ''
+            print
+            
+            topicToLearn = sortedList[len(sortedList)-1]['language']
+            if topicToLearn == "office":
+                topicToLearn = "microsoft office"
+            print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice 
+            print
+        
+    #length = len(userKnownLanguages)         
 	# Determine how close the user is to each topic currently
 	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
-	print nearestCluster
-	
+	print "Based on the languages you already know, " 
+	for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
+            print x,
+    print "you are most capable of working in the field of ", nearestCluster 
+		
 	self.window.destroy()
 	self.windowVisible = False
 	input = raw_input("") # Wait for input from console just to exit the program.
@@ -245,6 +257,8 @@ class RecommenderAlgorithm(object):
 	B1.grid(row=xcol+1,column=ycol-2)
 	B1.bind("<Button-1>", lambda e: self.recommend(1))
 	doneFrame.pack(side = TOP)
+
+	#swin.config(command=mainFrame.yview)
 
 	while self.windowVisible == True:
 		self.window.mainloop()
