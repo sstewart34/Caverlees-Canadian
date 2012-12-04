@@ -7,6 +7,7 @@ from Tkinter import *
 import tkMessageBox
 import Tkinter
 import cluster
+from operator import itemgetter
 
 class MyClickButton():
     def __init__(self, Button, label, row, column):
@@ -49,7 +50,7 @@ class RecommenderAlgorithm(object):
 	self.buttons = []
 	self.window = Tkinter.Tk()
 	self.windowVisible = True
-	self.listbox = []
+	self.listbox = Tkinter.Listbox() 
 
     """
 	Create the index by language
@@ -128,14 +129,39 @@ class RecommenderAlgorithm(object):
 				userKnownLanguages[button.t] = 1
 	print userKnownLanguages
 
+	topicOfChoice = ""
+	# Grab the topic the user selected
+	try:
+		index = self.listbox.curselection()[0]
+		topicOfChoice = self.listbox.get(index)
+	except IndexError:
+		pass
+	print topicOfChoice
+    	unknownLanguages = []
+        
+        for key in self.indexByTopic[topicOfChoice]['languages']:
+            if key not in userKnownLanguages:
+                unknownLanguages.append({'language':key, 'count':self.indexByTopic[topicOfChoice]['languages'][key]})
+        
+        sortedList = (sorted(unknownLanguages, key=itemgetter('count')))
+        
+        if len(sortedList) == 0:
+            print
+            print "You already know all the languages that you need to get a job in ", topicOfChoice, ". You are TOO SMART"
+            print
+            return ''
+        print
+        print "It is recommended that you learn ", sortedList[len(sortedList)-1]['language'], " to increase your job options when searching for a job in ", topicOfChoice 
+        print
+        return sortedList[len(sortedList)-1]['language']
+                    
 	# Determine how close the user is to each topic currently
 	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
 	print nearestCluster
-	print self.indexByTopic
 	
 	self.window.destroy()
 	self.windowVisible = False
-	input = raw_input("") # Wait for input from console just to exit the program.
+	#input = raw_input("") # Wait for input from console just to exit the program.
 	pass
 
     """
@@ -195,7 +221,7 @@ class RecommenderAlgorithm(object):
         count = 0	
 	
 	listFrame = Tkinter.Frame(mainFrame)
-	list = Tkinter.Listbox(listFrame, selectmode=SINGLE, width=30)
+	self.listbox = Tkinter.Listbox(listFrame, selectmode=SINGLE, width=30)
 	topics = []	
 	for topic in self.indexByTopic:
 		topics.append(str(topic))
@@ -203,10 +229,10 @@ class RecommenderAlgorithm(object):
 	topics.sort(key=lambda x: x[0])
 	count = 1
 	for topic in topics:
-		list.insert(count, topic)
+		self.listbox.insert(count, topic)
 		count += 1
 
-	list.grid(row = xcol+1, column=0)
+	self.listbox.grid(row = xcol+1, column=0)
 	listFrame.pack(side = TOP)
 
 	xcol += 1	
