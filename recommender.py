@@ -144,19 +144,19 @@ class RecommenderAlgorithm(object):
                 unknownLanguages.append({'language':key, 'count':self.indexByTopic[topicOfChoice]['languages'][key]})
         
         sortedList = (sorted(unknownLanguages, key=itemgetter('count')))
-        """
-        if topicOfChoice == "":
-            print "Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are ", max(self.indexByLanguages.iteritems(), key=operator.itemgetter(1)),[0]
-        """
+        
         if len(sortedList) == 0:
             print
             print "You already know all the languages that you need to get a job in ", topicOfChoice, ". You are TOO SMART"
             print
             return ''
         print
-        print "It is recommended that you learn ", sortedList[len(sortedList)-1]['language'], " to increase your job options when searching for a job in ", topicOfChoice 
+	topicToLearn = sortedList[len(sortedList)-1]['language']
+	if topicToLearn == 'office':
+		topicToLearn = 'microsoft ' + topicToLearn
+        
+	print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice 
         print
-        return sortedList[len(sortedList)-1]['language']
                     
 	# Determine how close the user is to each topic currently
 	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
@@ -245,8 +245,6 @@ class RecommenderAlgorithm(object):
 	B1.grid(row=xcol+1,column=ycol-2)
 	B1.bind("<Button-1>", lambda e: self.recommend(1))
 	doneFrame.pack(side = TOP)
-
-	#swin.config(command=mainFrame.yview)
 
 	while self.windowVisible == True:
 		self.window.mainloop()

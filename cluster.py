@@ -19,9 +19,13 @@ def cosine(vec1,vec2):
     mag1 = math.sqrt(mag1)
     mag2 = math.sqrt(mag2)
 
+    if mag1 * mag2 == 0:
+	return 0.0
+ 
     for lang in vec1:
         if lang in vec2:
             dotp += ( vec1[lang] * vec2[lang] )
+    
     return float( dotp / ( mag1 * mag2 ) )
 
 def nearest(usr, data):
@@ -31,7 +35,7 @@ def nearest(usr, data):
 
     this uses K-nn clusters with a K of 1, where each topic is a cluster
     """
-    max = 0
+    max = -1.0
     top = ''
     for topic in data:
         sim = cosine(data[topic]['languages'], usr)

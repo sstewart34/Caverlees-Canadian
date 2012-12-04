@@ -31,7 +31,6 @@ CS4
 CS3
 HTML
 Flash
-microsoft
 office
 photoshop
 Dreamweaver
