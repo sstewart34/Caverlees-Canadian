@@ -144,7 +144,10 @@ class RecommenderAlgorithm(object):
                 unknownLanguages.append({'language':key, 'count':self.indexByTopic[topicOfChoice]['languages'][key]})
         
         sortedList = (sorted(unknownLanguages, key=itemgetter('count')))
-        
+        """
+        if topicOfChoice == "":
+            print "Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are ", max(self.indexByLanguages.iteritems(), key=operator.itemgetter(1)),[0]
+        """
         if len(sortedList) == 0:
             print
             print "You already know all the languages that you need to get a job in ", topicOfChoice, ". You are TOO SMART"
