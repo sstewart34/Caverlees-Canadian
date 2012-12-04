@@ -23,7 +23,7 @@ class MyClickButton():
 		self.clicked = False 
 	else: 
 		self.clicked = True
-	print self.t, self.clicked
+	#print self.t, self.clicked
 
 def tokenize(tweet):
 	tokens = re.findall("[a-zA-Z.#+]+", tweet.lower())
@@ -163,16 +163,16 @@ class RecommenderAlgorithm(object):
             topicToLearn = sortedList[len(sortedList)-1]['language']
             if topicToLearn == "office":
                 topicToLearn = "microsoft office"
-            print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice 
-            print
+            print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice, "." 
+            print 
         
-    #length = len(userKnownLanguages)         
+    	length = len(userKnownLanguages)         
 	# Determine how close the user is to each topic currently
 	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
-	print "Based on the languages you already know, " 
+	print "Based on the languages you already know, ", 
 	for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
             print x,
-    print "you are most capable of working in the field of ", nearestCluster 
+    	print ", you are most capable of working in the field of ", nearestCluster, "."
 		
 	self.window.destroy()
 	self.windowVisible = False
