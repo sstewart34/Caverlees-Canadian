@@ -161,7 +161,7 @@ class RecommenderAlgorithm(object):
 	
 	self.window.destroy()
 	self.windowVisible = False
-	#input = raw_input("") # Wait for input from console just to exit the program.
+	input = raw_input("") # Wait for input from console just to exit the program.
 	pass
 
     """
