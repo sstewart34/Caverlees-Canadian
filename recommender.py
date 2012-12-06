@@ -51,6 +51,7 @@ class RecommenderAlgorithm(object):
 	self.window = Tkinter.Tk()
 	self.windowVisible = True
 	self.listbox = Tkinter.Listbox() 
+	self.frames = []
 
     """
 	Create the index by language
@@ -137,15 +138,38 @@ class RecommenderAlgorithm(object):
 	except IndexError:
 		pass
 	#print topicOfChoice
-    	unknownLanguages = []
         
-        if topicOfChoice == "":
+	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
+		
+	for frame in self.frames:
+		frame.pack_forget()
+	
+	self.displayRecommendations(topicOfChoice, userKnownLanguages)
+	pass
+
+    def displayRecommendations(self, topicOfChoice, userKnownLanguages):
+	unknownLanguages = []
+	self.frames[0].destroy()
+	mainFrame = Tkinter.Frame(self.window)
+
+	if topicOfChoice == "":
             print "Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following: "
-            for x in dict(sorted(self.indexByLanguage.iteritems(), key=itemgetter(1),reverse=True)[:3]):
+            topLanguages = ""
+	    for x in dict(sorted(self.indexByLanguage.iteritems(), key=itemgetter(1),reverse=True)[:3]):
                 print x,
+		topLanguages = topLanguages + " " + x
             print
-            print 
-        
+            print
+	    
+	    text = Tkinter.Text(mainFrame, height = 2, width = 135, font=Tkinter.Font(size=20))
+            text.insert(INSERT,"Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following:")
+            text.grid(row = 0, column = 0)
+	    text.insert(INSERT,topLanguages)
+	    text.grid(row = 1, column = 0)
+
+            mainFrame.pack(side = TOP)
+	    self.frames.append(mainFrame)        
+
         else:
             for key in self.indexByTopic[topicOfChoice]['languages']:
                 if key not in userKnownLanguages:
@@ -163,26 +187,17 @@ class RecommenderAlgorithm(object):
             topicToLearn = sortedList[len(sortedList)-1]['language']
             if topicToLearn == "office":
                 topicToLearn = "microsoft office"
-            print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice, "." 
-            print 
+            print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice, "."
+            print
         
-    	length = len(userKnownLanguages)         
-	# Determine how close the user is to each topic currently
-	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
-	print "Based on the languages you already know, ", 
-	for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
+    	length = len(userKnownLanguages)
+        # Determine how close the user is to each topic currently
+        nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
+        print "Based on the languages you already know, ",
+        for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
             print x, ",",
     	print " you are most capable of working in the field of ", nearestCluster, "."
-		
-	self.window.destroy()
-	self.windowVisible = False
-	input = raw_input("") # Wait for input from console just to exit the program.
 	pass
-
-    """
-    def recommend(self, howMany):
-	pass
-    """
 
     """
 	Will print a specific index to a file
@@ -203,6 +218,7 @@ class RecommenderAlgorithm(object):
     def userInterface(self):
 	mainFrame = Tkinter.Canvas(self.window)
 	mainFrame.pack()
+	self.frames.append(mainFrame)
 
 	#swin = Tkinter.Scrollbar(mainFrame, width=10, orient=VERTICAL)
     	#swin.pack(fill=Y,side=RIGHT,padx=0,pady=0)
@@ -226,12 +242,26 @@ class RecommenderAlgorithm(object):
 		button.bind("<Button-1>", lambda e: myButton.pressed())
 		myButton = MyClickButton(button, str(language), xcol, ycol)
 		self.buttons.append(myButton)
-		if ycol > 12:
-                        xcol += 1
-                        ycol = 5
-                else:
+		if xcol > 10:
                         ycol += 1
+                        xcol = 5
+                else:
+                        xcol += 1
 	checkFrame.pack(side = TOP)
+
+	spaceFrame = Tkinter.Frame(mainFrame)
+	t = Text(spaceFrame, height = 5)
+	t.grid(row=0, column=0)
+	spaceFrame.pack(side = TOP)
+
+	textFrame2 = Tkinter.Frame(mainFrame)
+        text2 = Text(textFrame2, height=1, width=56)
+        text2.insert(INSERT,"Select the Computer Science topic you are interested in:")
+        text2.grid(row=0, column=0)
+	textFrame2.pack(side = TOP)
+
+	xcol += 1
+	ycol += 1
 
         count = 0	
 	
