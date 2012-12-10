@@ -52,6 +52,7 @@ class RecommenderAlgorithm(object):
 	self.windowVisible = True
 	self.listbox = Tkinter.Listbox() 
 	self.frames = []
+	self.restart = False
 
     """
 	Create the index by language
@@ -161,14 +162,13 @@ class RecommenderAlgorithm(object):
             print
             print
 	    
-	    text = Tkinter.Text(mainFrame, height = 2, width = 135, font=Tkinter.Font(size=20))
+	    text = Tkinter.Text(mainFrame, height = 2, width = 135)
             text.insert(INSERT,"Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following:")
             text.grid(row = 0, column = 0)
 	    text.insert(INSERT,topLanguages)
 	    text.grid(row = 1, column = 0)
 
             mainFrame.pack(side = TOP)
-	    self.frames.append(mainFrame)        
 
         else:
             for key in self.indexByTopic[topicOfChoice]['languages']:
@@ -179,6 +179,12 @@ class RecommenderAlgorithm(object):
             
             if len(sortedList) == 0:
                 print
+		text = Tkinter.Text(mainFrame)
+		text.insert(INSERT, "You already know all the languages that you need to get a job in ")
+		text.insert(INSERT, topicOfChoice)
+		text.insert(INSERT, ". You are too smart!")
+		text.grid(row = 0, column = 0)
+		mainFrame.pack(side = TOP)
                 print "You already know all the languages that you need to get a job in ", topicOfChoice, ". You are TOO SMART"
                 print
                 return ''
@@ -187,18 +193,48 @@ class RecommenderAlgorithm(object):
             topicToLearn = sortedList[len(sortedList)-1]['language']
             if topicToLearn == "office":
                 topicToLearn = "microsoft office"
+	    text2 = Tkinter.Text(mainFrame)
+	    text2.insert(INSERT, "It is recommended that you learn ")
+	    text2.insert(INSERT, topicToLearn)
+	    text2.insert(INSERT, " to increase your job options when searching for a job in")
+	    text2.insert(INSERT, topicOfChoice + ".")
+	    mainFrame.pack(side = TOP)
             print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice, "."
             print
         
     	length = len(userKnownLanguages)
         # Determine how close the user is to each topic currently
         nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
+	text3 = Tkinter.Text(mainFrame)
+	text3.insert(INSERT, "Based on the languages you already know: ")
         print "Based on the languages you already know, ",
         for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
             print x, ",",
+	    text3.insert(INSERT, x + ", ")
+	text3.insert(INSERT, "you are most capable of working in the field of " + nearestCluster + ".")
+	text3.grid(row = 3, column = 0)
+	
+	restart = Tkinter.Button(mainFrame, text="Choose another selection")
+	restart.grid(row=5,column=15)
+        restart.bind("<Button-1>", lambda e: self.restartFunc())
+
+	mainFrame.pack(side = TOP)
+	self.frames.append(mainFrame)
     	print " you are most capable of working in the field of ", nearestCluster, "."
 	pass
 
+    """
+	Restart the GUI
+    """
+    def restartFunc(self):
+	self.frames[0].destroy()
+	self.buttons = []
+        self.windowVisible = True
+        self.listbox = Tkinter.Listbox()
+        self.frames = []
+	self.restart = True
+	pass
+	
     """
 	Will print a specific index to a file
     """
@@ -301,8 +337,8 @@ def main():
     recommend.createTopicList()
     recommend.printToFile('indexByTopics.json')
     recommend.printToFile('indexByLanguages.json')
-    recommend.userInterface()
-    #recommend.recommend(1)    
+    while recommend.restart == False:
+	recommend.userInterface()
              
 if __name__=="__main__":
     main()
