@@ -9,6 +9,8 @@ import Tkinter
 import tkFont
 import cluster
 from operator import itemgetter
+from reportlab.graphics.shapes import Drawing
+from reportlab.graphics.charts.barcharts import VerticalBarChart
 
 class MyClickButton():
     def __init__(self, Button, label, row, column):
@@ -142,12 +144,27 @@ class RecommenderAlgorithm(object):
 	#print topicOfChoice
         
 	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
-		
 	for frame in self.frames:
 		frame.pack_forget()
-	
-	self.displayRecommendations(topicOfChoice, userKnownLanguages)
-	pass
+        self.displayRecommendations(topicOfChoice, userKnownLanguages)
+        data = cluster.difference(self.indexByTopic[nearestCluster]['languages'], userKnownLanguages)
+        d1 = []; labels = []
+        for entry in data:
+            d1.append(entry[1])
+            labels.append(entry[0])
+        print type(d1), d1
+        d = Drawing(300,200)
+        chart = VerticalBarChart()
+        chart.width = 260
+        chart.height = 160
+        chart.x = 20
+        chart.y = 10
+        chart.data = d1
+        chart.categoryAxis.categoryNames = labels
+        d.add(chart)
+        print dir(type(d))
+        d.save(formats=['pdf'],outDir='.',fnRoot=None)
+        pass
 
     def displayRecommendations(self, topicOfChoice, userKnownLanguages):
 	unknownLanguages = []

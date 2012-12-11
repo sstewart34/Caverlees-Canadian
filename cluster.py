@@ -53,5 +53,6 @@ def difference(topic, usr):
     for lang in topic:
         if lang not in usr:
             final[lang] = topic[lang]
-    done = sorted(final, key=final.get)
-    return done[::-1] #list reveral must be done this way (not sure why)
+    done = [(k, final[k]) for k in sorted(final, key=final.get, reverse=True)]
+                #    done = sorted(final, key=final.get)
+    return done #[::-1] #list reveral must be done this way (not sure why)

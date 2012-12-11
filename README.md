@@ -19,6 +19,7 @@ Dependencies:
 	re (regular expressions)
 	Tkinter
 	tkMessageBox
+	reportlab
 
 File Descriptions:
 
