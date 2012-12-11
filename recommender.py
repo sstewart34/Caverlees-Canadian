@@ -6,6 +6,7 @@ import json
 from Tkinter import *
 import tkMessageBox
 import Tkinter
+import tkFont
 import cluster
 from operator import itemgetter
 
@@ -152,7 +153,7 @@ class RecommenderAlgorithm(object):
 	unknownLanguages = []
 	self.frames[0].destroy()
 	mainFrame = Tkinter.Frame(self.window)
-
+	f = tkFont.Font(size=18)
 	if topicOfChoice == "":
             print "Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following: "
             topLanguages = ""
@@ -162,13 +163,11 @@ class RecommenderAlgorithm(object):
             print
             print
 	    
-	    text = Tkinter.Text(mainFrame, height = 2, width = 135)
+	    text = Tkinter.Text(mainFrame, height = 2, width = 135, font = f)
             text.insert(INSERT,"Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following:")
             text.grid(row = 0, column = 0)
 	    text.insert(INSERT,topLanguages)
 	    text.grid(row = 1, column = 0)
-
-            mainFrame.pack(side = TOP)
 
         else:
             for key in self.indexByTopic[topicOfChoice]['languages']:
@@ -179,7 +178,7 @@ class RecommenderAlgorithm(object):
             
             if len(sortedList) == 0:
                 print
-		text = Tkinter.Text(mainFrame)
+		text = Tkinter.Text(mainFrame, font=f)
 		text.insert(INSERT, "You already know all the languages that you need to get a job in ")
 		text.insert(INSERT, topicOfChoice)
 		text.insert(INSERT, ". You are too smart!")
@@ -193,31 +192,31 @@ class RecommenderAlgorithm(object):
             topicToLearn = sortedList[len(sortedList)-1]['language']
             if topicToLearn == "office":
                 topicToLearn = "microsoft office"
-	    text2 = Tkinter.Text(mainFrame)
+	    text2 = Tkinter.Text(mainFrame, height = 2, font=f)
 	    text2.insert(INSERT, "It is recommended that you learn ")
 	    text2.insert(INSERT, topicToLearn)
-	    text2.insert(INSERT, " to increase your job options when searching for a job in")
+	    text2.insert(INSERT, " to increase your job options when searching for a job in ")
 	    text2.insert(INSERT, topicOfChoice + ".")
-	    mainFrame.pack(side = TOP)
+	    text2.grid(row=3, column=0)
             print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice, "."
             print
         
     	length = len(userKnownLanguages)
         # Determine how close the user is to each topic currently
         nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
-	text3 = Tkinter.Text(mainFrame)
+	text3 = Tkinter.Text(mainFrame, height=2, font=f)
 	text3.insert(INSERT, "Based on the languages you already know: ")
         print "Based on the languages you already know, ",
         for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
             print x, ",",
 	    text3.insert(INSERT, x + ", ")
 	text3.insert(INSERT, "you are most capable of working in the field of " + nearestCluster + ".")
-	text3.grid(row = 3, column = 0)
+	text3.grid(row = 4, column = 0)
 	
 	restart = Tkinter.Button(mainFrame, text="Choose another selection")
-	restart.grid(row=5,column=15)
+	restart.grid(row=5)
         restart.bind("<Button-1>", lambda e: self.restartFunc())
-
+	self.windowVisible = False
 	mainFrame.pack(side = TOP)
 	self.frames.append(mainFrame)
     	print " you are most capable of working in the field of ", nearestCluster, "."
@@ -227,12 +226,19 @@ class RecommenderAlgorithm(object):
 	Restart the GUI
     """
     def restartFunc(self):
-	self.frames[0].destroy()
+	for frame in self.frames:
+		frame.pack_forget()
+	while len(self.frames) > 0:
+		self.frames.pop()
+	self.window.unbind("<Button-1>")
+	self.buttons.pop()
 	self.buttons = []
         self.windowVisible = True
         self.listbox = Tkinter.Listbox()
         self.frames = []
 	self.restart = True
+	self.windowVisible = True
+	self.userInterface()
 	pass
 	
     """
@@ -337,8 +343,7 @@ def main():
     recommend.createTopicList()
     recommend.printToFile('indexByTopics.json')
     recommend.printToFile('indexByLanguages.json')
-    while recommend.restart == False:
-	recommend.userInterface()
+    recommend.userInterface()
              
 if __name__=="__main__":
     main()
