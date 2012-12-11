@@ -237,7 +237,7 @@ class RecommenderAlgorithm(object):
         self.listbox = Tkinter.Listbox()
         self.frames = []
 	self.restart = True
-	self.windowVisible = True
+	self.windowVisible = False 
 	self.userInterface()
 	pass
 	
