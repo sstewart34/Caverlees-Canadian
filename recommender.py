@@ -154,7 +154,7 @@ class RecommenderAlgorithm(object):
         d = Drawing(300,200)
         chart = VerticalBarChart()
         chart.width = 260
-        chart.height = 350 #160
+        chart.height = 160
         chart.x = 20
         chart.y = 10
         chart.data = [d1]
@@ -219,12 +219,15 @@ class RecommenderAlgorithm(object):
         # Determine how close the user is to each topic currently
         nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
 	text3 = Tkinter.Text(mainFrame, height=2, font=f)
-	text3.insert(INSERT, "Based on the languages you already know: ")
-        #print "Based on the languages you already know, ",
-        for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
-            #print x, ",",
-	    text3.insert(INSERT, x + ", ")
-	text3.insert(INSERT, "you are most capable of working in the field of " + nearestCluster + ".")
+	if len(userKnownLanguages) == 0:
+		text3.insert(INSERT, "You don't know any languages already, so go into Liberal Arts")
+	else:
+		text3.insert(INSERT, "Based on the languages you already know: ")
+        	#print "Based on the languages you already know, ",
+        	for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
+            		#print x, ",",
+	    		text3.insert(INSERT, x + ", ")
+		text3.insert(INSERT, "you are most capable of working in the field of " + nearestCluster + ".")
 	text3.grid(row = 4, column = 0)
 	
 	restart = Tkinter.Button(mainFrame, text="Choose another selection")
