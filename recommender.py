@@ -161,7 +161,7 @@ class RecommenderAlgorithm(object):
 	    for x in dict(sorted(self.indexByLanguage.iteritems(), key=itemgetter(1),reverse=True)[:3]):
 		topLanguages = topLanguages + " " + x
 	    
-	    text = Tkinter.Text(mainFrame, height = 2, width = 135, font = f)
+	    text = Tkinter.Text(mainFrame, width = 135, font = f)
             text.insert(INSERT,"Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following:")
             text.grid(row = 0, column = 0)
 	    text.insert(INSERT,topLanguages)
@@ -196,7 +196,7 @@ class RecommenderAlgorithm(object):
     	length = len(userKnownLanguages)
         # Determine how close the user is to each topic currently
         nearestCluster = classifier.nearest(userKnownLanguages, self.indexByTopic)
-	text3 = Tkinter.Text(mainFrame, height=2, font=f)
+	text3 = Tkinter.Text(mainFrame, height = 3, font=f)
 	if len(userKnownLanguages) == 0:
 		text3.insert(INSERT, "You don't know any languages already, so go into Liberal Arts")
 	else:
