@@ -1,9 +1,6 @@
 import json
 import math
 
-#with open('indexByTopics.json', 'rb') as fp:
-#        data = json.load(fp)
-
 def cosine(vec1,vec2):
     """
     Takes in 2 dicts of languages -> int (represents a topic/user)

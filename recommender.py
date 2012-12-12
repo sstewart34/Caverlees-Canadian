@@ -13,6 +13,8 @@ from operator import itemgetter
 from reportlab.graphics.shapes import Drawing
 from reportlab.graphics.charts.barcharts import VerticalBarChart
 
+# Create my own button so that I can tell in my object which one was
+# clicked or unclicked
 class MyClickButton():
     def __init__(self, Button, label, row, column):
 	self.clicked = False
@@ -27,8 +29,8 @@ class MyClickButton():
 		self.clicked = False 
 	else: 
 		self.clicked = True
-	#print self.t, self.clicked
 
+# Tokenize the words. Remove all punctuation except '.#+'
 def tokenize(tweet):
 	tokens = re.findall("[a-zA-Z.#+]+", tweet.lower())
 	return tokens
@@ -70,7 +72,6 @@ class RecommenderAlgorithm(object):
 	f = open('languages.txt','r')
 	for line in f.readlines():
 		self.languages.append((line.lower()).strip())
-	#print len(self.languages)
 	count = 0
 	for job in self.jobs:
 		topic = job['topic']
@@ -91,17 +92,9 @@ class RecommenderAlgorithm(object):
 		count += 1
 	for language in self.indexByLanguage:
 		self.indexByLanguage[language]['unique'] = len(self.indexByLanguage[language]['topics'])
-	#print count
         sorted_list = [x for x in self.indexByLanguage.iteritems()]
 	sorted_list.sort(key=lambda x: x[1]['count']) # sort by count
 	sorted_list.reverse()
-	#for item in sorted_list:
-	#	print item[0], item[1]['count'], item[1]['topics']
-	#for item in sorted_list:
-	#	print item[0]
-	#for item in sorted_list:
-	#	print  item[1]['count']#, item[1]['topics']
-	#print len(sorted_list)
 	pass
 
     """
@@ -121,8 +114,6 @@ class RecommenderAlgorithm(object):
 	
 	sorted_list = [x for x in self.indexByTopic.iteritems()]
 	sorted_list.sort(key=lambda x: x[0]) # sort alphabetically by language
-	#for item in sorted_list:
-	#	print item[0], item[1]
 	pass
 
     # Users provided languages are in userKnownLanguages
@@ -133,7 +124,6 @@ class RecommenderAlgorithm(object):
 		if(button.clicked == True):
 			if button.t not in userKnownLanguages:
 				userKnownLanguages[button.t] = 1
-	#print userKnownLanguages
 
 	topicOfChoice = ""
 	# Grab the topic the user selected
@@ -142,7 +132,6 @@ class RecommenderAlgorithm(object):
 		topicOfChoice = self.listbox.get(index)
 	except IndexError:
 		pass
-	#print topicOfChoice
         
 	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
 	for frame in self.frames:
@@ -150,7 +139,6 @@ class RecommenderAlgorithm(object):
         self.displayRecommendations(topicOfChoice, userKnownLanguages)
         data = cluster.difference(self.indexByTopic[nearestCluster]['languages'], userKnownLanguages)
         labels,d1 =zip(*data)
-        #print type(d1), d1
         d = Drawing(300,200)
         chart = VerticalBarChart()
         chart.width = 260
@@ -169,13 +157,9 @@ class RecommenderAlgorithm(object):
 	mainFrame = Tkinter.Frame(self.window)
 	f = tkFont.Font(size=18)
 	if topicOfChoice == "":
-            #print "Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following: "
             topLanguages = ""
 	    for x in dict(sorted(self.indexByLanguage.iteritems(), key=itemgetter(1),reverse=True)[:3]):
-                #print x,
 		topLanguages = topLanguages + " " + x
-            #print
-            #print
 	    
 	    text = Tkinter.Text(mainFrame, height = 2, width = 135, font = f)
             text.insert(INSERT,"Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following:")
@@ -191,17 +175,13 @@ class RecommenderAlgorithm(object):
             sortedList = (sorted(unknownLanguages, key=itemgetter('count')))
             
             if len(sortedList) == 0:
-                #print
 		text = Tkinter.Text(mainFrame, font=f)
 		text.insert(INSERT, "You already know all the languages that you need to get a job in ")
 		text.insert(INSERT, topicOfChoice)
 		text.insert(INSERT, ". You are too smart!")
 		text.grid(row = 0, column = 0)
 		mainFrame.pack(side = TOP)
-                #print "You already know all the languages that you need to get a job in ", topicOfChoice, ". You are TOO SMART"
-                #print
                 return ''
-            #print
             
             topicToLearn = sortedList[len(sortedList)-1]['language']
             if topicToLearn == "office":
@@ -212,8 +192,6 @@ class RecommenderAlgorithm(object):
 	    text2.insert(INSERT, " to increase your job options when searching for a job in ")
 	    text2.insert(INSERT, topicOfChoice + ".")
 	    text2.grid(row=3, column=0)
-            #print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice, "."
-            #print
         
     	length = len(userKnownLanguages)
         # Determine how close the user is to each topic currently
@@ -223,9 +201,7 @@ class RecommenderAlgorithm(object):
 		text3.insert(INSERT, "You don't know any languages already, so go into Liberal Arts")
 	else:
 		text3.insert(INSERT, "Based on the languages you already know: ")
-        	#print "Based on the languages you already know, ",
         	for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
-            		#print x, ",",
 	    		text3.insert(INSERT, x + ", ")
 		text3.insert(INSERT, "you are most capable of working in the field of " + nearestCluster + ".")
 	text3.grid(row = 4, column = 0)
@@ -236,7 +212,6 @@ class RecommenderAlgorithm(object):
 	self.windowVisible = False
 	mainFrame.pack(side = TOP)
 	self.frames.append(mainFrame)
-    	#print " you are most capable of working in the field of ", nearestCluster, "."
 	pass
 
     """
@@ -279,9 +254,6 @@ class RecommenderAlgorithm(object):
 	mainFrame = Tkinter.Canvas(self.window)
 	mainFrame.pack()
 	self.frames.append(mainFrame)
-
-	#swin = Tkinter.Scrollbar(mainFrame, width=10, orient=VERTICAL)
-    	#swin.pack(fill=Y,side=RIGHT,padx=0,pady=0)
 
 	textFrame = Tkinter.Frame(mainFrame)
 	text = Text(textFrame, height=1, width=37)
@@ -348,14 +320,12 @@ class RecommenderAlgorithm(object):
 	B1.bind("<Button-1>", lambda e: self.recommend(1))
 	doneFrame.pack(side = TOP)
 
-	#swin.config(command=mainFrame.yview)
-
 	while self.windowVisible == True:
 		self.window.mainloop()
 	pass
 
 def main():   
-    os.path.exists("graph.pdf") and os.remove("graph.pdf")
+    os.path.exists("graph.pdf") and os.remove("graph.pdf") # If graph.pdf exists from last run, delete it.
     docs = utils.read_docs()
     recommend = RecommenderAlgorithm(docs)
     recommend.createLanguageList()              
