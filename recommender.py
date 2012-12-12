@@ -7,7 +7,7 @@ from Tkinter import *
 import tkMessageBox
 import Tkinter
 import tkFont
-import cluster
+import classifier
 import os
 from operator import itemgetter
 from reportlab.graphics.shapes import Drawing
@@ -144,11 +144,11 @@ class RecommenderAlgorithm(object):
 		pass
 	#print topicOfChoice
         
-	nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
+	nearestCluster = classifier.nearest(userKnownLanguages, self.indexByTopic)
 	for frame in self.frames:
 		frame.pack_forget()
         self.displayRecommendations(topicOfChoice, userKnownLanguages)
-        data = cluster.difference(self.indexByTopic[nearestCluster]['languages'], userKnownLanguages)
+        data = classifier.difference(self.indexByTopic[nearestCluster]['languages'], userKnownLanguages)
         labels,d1 =zip(*data)
         #print type(d1), d1
         d = Drawing(300,200)
@@ -217,7 +217,7 @@ class RecommenderAlgorithm(object):
         
     	length = len(userKnownLanguages)
         # Determine how close the user is to each topic currently
-        nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
+        nearestCluster = classifier.nearest(userKnownLanguages, self.indexByTopic)
 	text3 = Tkinter.Text(mainFrame, height=2, font=f)
 	if len(userKnownLanguages) == 0:
 		text3.insert(INSERT, "You don't know any languages already, so go into Liberal Arts")
