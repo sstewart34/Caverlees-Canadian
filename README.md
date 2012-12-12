@@ -8,7 +8,7 @@ How to run the program:
 		Type python recommenderTest.py into the terminal within the tests/ folder. This will run tests of our core algorithm and parser.
 	
 	To run the regular program:
-		Type python recommender.py jobs.json into a terminal within the main directory. This will boot a window with checkbuttons. The user should check off each of the language(s) that he/she knows and click done. The user should also choose an area of Computer Science they are interested in (i.e. information storage and retrieval). Our program will recommend a programming language to the user that they should learn in order to qualify for more jobs.
+		Type "python recommender.py jobs.json" into a terminal within the main directory. This will boot a window with checkbuttons. The user should check off each of the language(s) that he/she knows and click done. The user should also choose an area of Computer Science they are interested in (i.e. information storage and retrieval). Our program will recommend a programming language to the user that they should learn in order to qualify for more jobs.
 
 Dependencies:
 	BeautifulSoup (html parsing, web crawling)
