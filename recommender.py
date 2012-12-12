@@ -150,11 +150,11 @@ class RecommenderAlgorithm(object):
         self.displayRecommendations(topicOfChoice, userKnownLanguages)
         data = cluster.difference(self.indexByTopic[nearestCluster]['languages'], userKnownLanguages)
         labels,d1 =zip(*data)
-        print type(d1), d1
+        #print type(d1), d1
         d = Drawing(300,200)
         chart = VerticalBarChart()
         chart.width = 260
-        chart.height = 160
+        chart.height = 350 #160
         chart.x = 20
         chart.y = 10
         chart.data = [d1]
@@ -169,13 +169,13 @@ class RecommenderAlgorithm(object):
 	mainFrame = Tkinter.Frame(self.window)
 	f = tkFont.Font(size=18)
 	if topicOfChoice == "":
-            print "Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following: "
+            #print "Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following: "
             topLanguages = ""
 	    for x in dict(sorted(self.indexByLanguage.iteritems(), key=itemgetter(1),reverse=True)[:3]):
-                print x,
+                #print x,
 		topLanguages = topLanguages + " " + x
-            print
-            print
+            #print
+            #print
 	    
 	    text = Tkinter.Text(mainFrame, height = 2, width = 135, font = f)
             text.insert(INSERT,"Since no topic was selected, it is recommended that you learn one of the top languages across all given topics which are the following:")
@@ -191,17 +191,17 @@ class RecommenderAlgorithm(object):
             sortedList = (sorted(unknownLanguages, key=itemgetter('count')))
             
             if len(sortedList) == 0:
-                print
+                #print
 		text = Tkinter.Text(mainFrame, font=f)
 		text.insert(INSERT, "You already know all the languages that you need to get a job in ")
 		text.insert(INSERT, topicOfChoice)
 		text.insert(INSERT, ". You are too smart!")
 		text.grid(row = 0, column = 0)
 		mainFrame.pack(side = TOP)
-                print "You already know all the languages that you need to get a job in ", topicOfChoice, ". You are TOO SMART"
-                print
+                #print "You already know all the languages that you need to get a job in ", topicOfChoice, ". You are TOO SMART"
+                #print
                 return ''
-            print
+            #print
             
             topicToLearn = sortedList[len(sortedList)-1]['language']
             if topicToLearn == "office":
@@ -212,17 +212,17 @@ class RecommenderAlgorithm(object):
 	    text2.insert(INSERT, " to increase your job options when searching for a job in ")
 	    text2.insert(INSERT, topicOfChoice + ".")
 	    text2.grid(row=3, column=0)
-            print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice, "."
-            print
+            #print "It is recommended that you learn ", topicToLearn, " to increase your job options when searching for a job in ", topicOfChoice, "."
+            #print
         
     	length = len(userKnownLanguages)
         # Determine how close the user is to each topic currently
         nearestCluster = cluster.nearest(userKnownLanguages, self.indexByTopic)
 	text3 = Tkinter.Text(mainFrame, height=2, font=f)
 	text3.insert(INSERT, "Based on the languages you already know: ")
-        print "Based on the languages you already know, ",
+        #print "Based on the languages you already know, ",
         for x in dict(sorted(userKnownLanguages.iteritems(), key=itemgetter(1),reverse=True)[:length]):
-            print x, ",",
+            #print x, ",",
 	    text3.insert(INSERT, x + ", ")
 	text3.insert(INSERT, "you are most capable of working in the field of " + nearestCluster + ".")
 	text3.grid(row = 4, column = 0)
@@ -233,7 +233,7 @@ class RecommenderAlgorithm(object):
 	self.windowVisible = False
 	mainFrame.pack(side = TOP)
 	self.frames.append(mainFrame)
-    	print " you are most capable of working in the field of ", nearestCluster, "."
+    	#print " you are most capable of working in the field of ", nearestCluster, "."
 	pass
 
     """
@@ -252,6 +252,7 @@ class RecommenderAlgorithm(object):
         self.frames = []
 	self.restart = True
 	self.windowVisible = False 
+	os.path.exists("graph.pdf") and os.remove("graph.pdf")
 	self.userInterface()
 	pass
 	
@@ -351,6 +352,7 @@ class RecommenderAlgorithm(object):
 	pass
 
 def main():   
+    os.path.exists("graph.pdf") and os.remove("graph.pdf")
     docs = utils.read_docs()
     recommend = RecommenderAlgorithm(docs)
     recommend.createLanguageList()              
