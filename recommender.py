@@ -8,6 +8,7 @@ import tkMessageBox
 import Tkinter
 import tkFont
 import cluster
+import os
 from operator import itemgetter
 from reportlab.graphics.shapes import Drawing
 from reportlab.graphics.charts.barcharts import VerticalBarChart
@@ -148,10 +149,7 @@ class RecommenderAlgorithm(object):
 		frame.pack_forget()
         self.displayRecommendations(topicOfChoice, userKnownLanguages)
         data = cluster.difference(self.indexByTopic[nearestCluster]['languages'], userKnownLanguages)
-        d1 = []; labels = []
-        for entry in data:
-            d1.append(entry[1])
-            labels.append(entry[0])
+        labels,d1 =zip(*data)
         print type(d1), d1
         d = Drawing(300,200)
         chart = VerticalBarChart()
@@ -159,12 +157,11 @@ class RecommenderAlgorithm(object):
         chart.height = 160
         chart.x = 20
         chart.y = 10
-        chart.data = d1
+        chart.data = [d1]
         chart.categoryAxis.categoryNames = labels
         d.add(chart)
-        print dir(type(d))
-        d.save(formats=['pdf'],outDir='.',fnRoot=None)
-        pass
+        d.save(formats=['pdf'],outDir='.',fnRoot='graph')
+        os.system('open graph.pdf')
 
     def displayRecommendations(self, topicOfChoice, userKnownLanguages):
 	unknownLanguages = []
