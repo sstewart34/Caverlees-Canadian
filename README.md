@@ -77,6 +77,10 @@ topics.txt
 utils.py
 	used solely for the purpose of containing a function that reads a file and returns a dict representation of a json file.
 
-Future Changes
-==============
-Plotting each topic and the user in an n-dimensional vector space where each axis is a skill. Inform the user what topic s/he is closest to. Later base the recommender off of what language would bring the user's point closer to the topic's point
+Changes between Checkpoint2 and Checkpoint3
+===========================================
+Plotting each topic and the user in an n-dimensional vector space where each axis is a skill. Inform the user what topic s/he is closest to. Later base the recommender off of what language would bring the user's point closer to the topic's point.
+
+Changes between Checkpoint3 and Final
+=====================================
+Allows the user to start over without restarting the program. The user can just click the 'Start again' button. Also, the languages for the topic the user is interested in get graphed and displayed as a pdf on the screen.
